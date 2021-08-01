@@ -36,6 +36,8 @@ routes.get('/api/registro',                            LicenseController.registr
 routes.get('/api/registronet',                         LicenseController.registronet);
 routes.get('/api/xemail',                              LicenseController.xemail);
 //
+routes.post('/api/emails/import',                      LicenseController.importEmails);
+//
 routes.get('/apimicrocad',                             LicenseController.microcad);
 //
 routes.get('/apiconregistronet/:id',                   LicenseController.conregistronet);

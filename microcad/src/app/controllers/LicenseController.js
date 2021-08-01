@@ -53,6 +53,15 @@ class LicenseController {
       return res.json(await TBLXemail.findAll());
    }
 
+   async importEmails(req, res) {
+      const { emails } = req.body
+
+      if (!!emails) {
+         const importedEmails = await TBLXemail.bulkCreate();
+         return res.json(importedEmails);
+      }
+   }
+
    //
    //MICROCAD
    async microcad(req, res) {
