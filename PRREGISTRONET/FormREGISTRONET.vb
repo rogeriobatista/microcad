@@ -619,6 +619,15 @@ Public Class FormREGISTRONET
         If CHKP2.Checked = True Then ENVIA_EMAIL_CHAVEDIGITAL("comercial@topocad2000.com.br", 3)
 
     End Sub
+
+    Private Sub CMDLISTARLISTAS_Click(sender As Object, e As EventArgs) Handles CMDLISTARLISTAS.Click
+        FormListarListas.Show()
+    End Sub
+
+    Private Sub CMDIMPMAIL_Click(sender As Object, e As EventArgs) Handles CMDIMPMAIL.Click
+        FormImportarEmails.Show()
+    End Sub
+
     Public Sub ENVIA_EMAIL_CHAVEDIGITAL(ByVal MM As String, ByVal II As Integer)
 
         Dim mail As New MailMessage()

@@ -51,6 +51,10 @@
     <ApplicationIcon>TOPOCAD2000.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
@@ -85,6 +89,7 @@
     <Compile Include="ConsultaNome.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Email.vb" />
     <Compile Include="FormConsultaEmail.designer.vb">
       <DependentUpon>FormConsultaEmail.vb</DependentUpon>
     </Compile>
@@ -97,10 +102,22 @@
     <Compile Include="FormConsultaNumeroSerie.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormImportarEmails.Designer.vb">
+      <DependentUpon>FormImportarEmails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormImportarEmails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormLicencaInvalida.Designer.vb">
       <DependentUpon>FormLicencaInvalida.vb</DependentUpon>
     </Compile>
     <Compile Include="FormLicencaInvalida.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListarLIstas.Designer.vb">
+      <DependentUpon>FormListarLIstas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormListarLIstas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormREGISTRONET.vb">
@@ -116,6 +133,7 @@
     <Compile Include="FormTabelas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ImportarListas.vb" />
     <Compile Include="Licenca.vb" />
     <Compile Include="ModuleNET.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -146,8 +164,14 @@
     <EmbeddedResource Include="FormConsultaNumeroSerie.resx">
       <DependentUpon>FormConsultaNumeroSerie.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormImportarEmails.resx">
+      <DependentUpon>FormImportarEmails.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLicencaInvalida.resx">
       <DependentUpon>FormLicencaInvalida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListarLIstas.resx">
+      <DependentUpon>FormListarLIstas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormREGISTRONET.resx">
       <DependentUpon>FormREGISTRONET.vb</DependentUpon>

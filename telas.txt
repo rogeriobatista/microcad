@@ -1,0 +1,23 @@
+-Para todas as tabela ordenar ao clicar no titulo da coluna e não apresentar a coluna ID quando existir.
+
+-TBLAtualiza: botão de salvar os dados editados. Ordenada por “nvxx,nvxxyy”
+
+-TBLDadosdat: botão para mostrar o total de instalações para cada mês. Ordenada por “ndata,nvxx”
+
+-TBLDadosdatmail: botão de exportar a coluna de email para um arquivo TXT
+
+-TBLDadosdth: apenas mostrar a tabela - ok
+
+-TBLDadosins: botão para lista na tela os “nserie0” com mais de 3 ocorrencias. Ordenada por “nserie0” descendente
+
+-TBLDadosins000: nenhum botão. Ordenada por “tod” descendente - ok
+
+-TBLDadostxt: iniciar ordenado por “ntot” descendente - ok
+
+-TBLNaoreg: apenas mostrar a tabela - ok
+
+-TBLRegistro:  apenas mostrar a tabela - ok
+
+-TBLRegistronet:  apenas mostrar a tabela - ok
+
+-TBLXemail: apenas mostrar a tabela - ok
