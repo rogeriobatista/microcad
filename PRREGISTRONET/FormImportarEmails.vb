@@ -14,18 +14,30 @@
 
         Dim selectedLists = CLBImportarEmails.CheckedItems
 
-        Dim importedItems = New List(Of Email)
+        Dim emailsToImport = New List(Of Email)
 
         For Each list As String In selectedLists
-            RTBDetalhes.Text += "Importando " & list.Split("\").Last() & vbNewLine
+            RTBDetalhes.Text += "Processando " & list.Split("\").Last() & vbNewLine
             If (list.Split(".").Last() = "TXT") Then
-                importedItems.AddRange(ImportarListas.ImportarTXT(list))
+                emailsToImport.AddRange(ImportarListas.ImportarTXT(list))
             Else
-                importedItems.AddRange(ImportarListas.ImportarCSV(list))
+                emailsToImport.AddRange(ImportarListas.ImportarCSV(list))
             End If
-            RTBDetalhes.Text += importedItems.Count().ToString() & " items importados" & vbNewLine
+            RTBDetalhes.Text += emailsToImport.Count().ToString() & " emails processados" & vbNewLine
         Next
 
-        MessageBox.Show("Importação concluída com sucesso!")
+        RTBDetalhes.Text += "==================== Importando Emails ====================" & vbNewLine
+
+        Dim importedEmails = ImportarListas.Salvar(emailsToImport)
+
+        RTBDetalhes.Text += "==================== Concluído ====================" & vbNewLine
+
+        If importedEmails.Count() > 0 Then
+            Dim successMessage = importedEmails.Count().ToString() & " emails importados com sucesso!"
+            RTBDetalhes.Text += successMessage & vbNewLine
+            MessageBox.Show(successMessage)
+        Else
+            MessageBox.Show("Nenhum email foi importado!")
+        End If
     End Sub
 End Class

@@ -1,4 +1,8 @@
-﻿Public Class ImportarListas
+﻿Imports System.Net
+Imports System.Text
+Imports Newtonsoft.Json
+
+Public Class ImportarListas
     Public Shared Function ImportarTXT(filePath As String) As List(Of Email)
 
         Dim importedEmails = New List(Of Email)
@@ -42,6 +46,21 @@
         End If
 
         Return importedEmails
+    End Function
+
+    Public Shared Function Salvar(emails As List(Of Email)) As List(Of Email)
+        Dim url As String = "http://localhost:3333/api/emails/import"
+        Dim response As String
+
+        Using webClient As New WebClient
+            webClient.Encoding = Encoding.UTF8
+            webClient.Headers("content-type") = "application/json"
+
+            Dim data() As Byte = Encoding.Default.GetBytes(JsonConvert.SerializeObject(emails, Formatting.Indented))
+            response = Encoding.Default.GetString(webClient.UploadData(url, "post", data))
+        End Using
+
+        Return JsonConvert.DeserializeObject(Of List(Of Email))(response)
     End Function
 
     Private Shared Function CreateEmail(line As String) As Email
