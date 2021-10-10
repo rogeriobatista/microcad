@@ -114,6 +114,12 @@
     <Compile Include="FormLicencaInvalida.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormLimparListas.Designer.vb">
+      <DependentUpon>FormLimparListas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormLimparListas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormListarLIstas.Designer.vb">
       <DependentUpon>FormListarLIstas.vb</DependentUpon>
     </Compile>
@@ -135,6 +141,7 @@
     </Compile>
     <Compile Include="ImportarListas.vb" />
     <Compile Include="Licenca.vb" />
+    <Compile Include="LimparListas.vb" />
     <Compile Include="ModuleNET.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -169,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLicencaInvalida.resx">
       <DependentUpon>FormLicencaInvalida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLimparListas.resx">
+      <DependentUpon>FormLimparListas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormListarLIstas.resx">
       <DependentUpon>FormListarLIstas.vb</DependentUpon>

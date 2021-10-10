@@ -1,0 +1,39 @@
+-BOTÃO IMPORTA EMAILS: Importar emails dos 4 arquivos + da TBLRegistronet e gravar em TBLXemail (id, nserie, email, data)
+
+ 
+
+LISTA-DADOSDAT.TXT – Importar nserie = TXXBBB
+
+LISTA-DADOSLIS.CSV – Importar nserie = TXXBBB
+
+LISTA-DADOSOUT.CSV – Importar nserie = TXXBBB
+
+LISTA-DADOSWIX.CSV – Importar nserie = TXXBBB
+
+TBLRegistronet – Importar quando nserie iniciar como T ou M e o nserie serie o proprio
+
+ 
+
+Informar no inicio o nome do arquivo que está importando e no final quantidade de emails lidos / acrescentados
+
+Importar como TXXBBB, EMAIL, DATA (AAMMDD)
+
+Para a importação da TBLRegistronet se já existir e nserie=XXXXXXXX não fazer nada e se for diferente atualizar o nserie se for diferente do que está na tabela (usuario que adquiriu atualização de versão)
+
+ 
+
+-BOTÃO LIMPAR LISTA: mudar o nserie para XXXXXXXX para que o email não seja mais listado
+
+LISTA-XXXXXXXX.CSV
+
+ 
+
+-BOTÃO LISTAR LISTAS: Gerar listas com os nomes abaixo para serem importadas pelo Emailmannager
+
+LISTA-1V16.csv – Listar quando nserie iniciar = T26 ou M26
+
+LISTA-1VXX.csv – Listar quando nserie iniciar = T ou M e não for como acima
+
+LISTA-2VAA.csv – Listar quando nserie iniciar = TXXAAA
+
+LISTA-2VBB.csv – Listar quando nserie iniciar = TXXBBB

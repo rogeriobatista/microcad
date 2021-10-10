@@ -57,8 +57,23 @@ class LicenseController {
       const { emails } = req.body
 
       if (!!emails) {
-         const importedEmails = await TBLXemail.bulkCreate();
+         const importedEmails = await TBLXemail.bulkCreate(emails);
          return res.json(importedEmails);
+      }
+   }
+
+   async clearEmails(req, res) {
+      const { emails } = req.body
+
+      if (!!emails) {
+
+         const clearedEmails = []
+
+         emails.forEach(item => {
+            clearedEmails.push(await TBLXemail.update(item, { where: { email: item.email} }));
+         })
+
+         return res.json(clearedEmails);
       }
    }
 
@@ -72,7 +87,6 @@ class LicenseController {
          {nserie: 'REGV01',uname: 'FELIX'     ,cname: 'FELIX-PC1'},
          {nserie: 'REGV01',uname: 'FELIX'     ,cname: 'FELIX-PC2'},
          {nserie: 'REGV01',uname: 'PLOTAGEM 4',cname: '4-PLOTAGEM'},
-         {nserie: 'REGV01',uname: 'ROGERIO'   ,cname: 'DESKTOP-4JSI2L2'},
          {nserie: 'REGV01',uname: 'ROGERIO'   ,cname: 'DESKTOP-4JSI2L2'}
       ]
       const valid = licences.some(x => x.nserie == nserie && x.uname == uname && x.cname == cname)

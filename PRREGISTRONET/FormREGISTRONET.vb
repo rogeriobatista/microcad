@@ -628,6 +628,10 @@ Public Class FormREGISTRONET
         FormImportarEmails.Show()
     End Sub
 
+    Private Sub CMDLIMPARLISTA_Click(sender As Object, e As EventArgs) Handles CMDLIMPARLISTA.Click
+        FormLimparListas.Show()
+    End Sub
+
     Public Sub ENVIA_EMAIL_CHAVEDIGITAL(ByVal MM As String, ByVal II As Integer)
 
         Dim mail As New MailMessage()
