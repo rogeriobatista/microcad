@@ -50,18 +50,17 @@ class LicenseController {
    }
 
    async xemail(req, res) {
-      await TBLXemail.findAll()
+      return res.json(await TBLXemail.findAll())
    }
 
    async listEmails(req, res) {
-      await TBLXemail.findAll()
-      // return res.json(await TBLXemail.findAll({
-      //    where: { 
-      //       nserie: {
-      //          [Op.ne]: 'XXXXXXXX'
-      //       }
-      //    }
-      // }))
+      return res.json(await TBLXemail.findAll({
+         where: { 
+            nserie: {
+               [Op.ne]: 'XXXXXXXX'
+            }
+         }
+      }))
    }
 
    async importEmails(req, res) {
