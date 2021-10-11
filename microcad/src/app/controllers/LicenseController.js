@@ -69,7 +69,7 @@ class LicenseController {
 
          const clearedEmails = []
 
-         emails.forEach(item => {
+         emails.forEach(async item => {
             clearedEmails.push(await TBLXemail.update(item, { where: { email: item.email} }));
          })
 
