@@ -120,10 +120,10 @@
     <Compile Include="FormLimparListas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormListarLIstas.Designer.vb">
-      <DependentUpon>FormListarLIstas.vb</DependentUpon>
+    <Compile Include="FormListarListas.Designer.vb">
+      <DependentUpon>FormListarListas.vb</DependentUpon>
     </Compile>
-    <Compile Include="FormListarLIstas.vb">
+    <Compile Include="FormListarListas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormREGISTRONET.vb">
@@ -142,6 +142,7 @@
     <Compile Include="ImportarListas.vb" />
     <Compile Include="Licenca.vb" />
     <Compile Include="LimparListas.vb" />
+    <Compile Include="ListarListas.vb" />
     <Compile Include="ModuleNET.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -180,8 +181,8 @@
     <EmbeddedResource Include="FormLimparListas.resx">
       <DependentUpon>FormLimparListas.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormListarLIstas.resx">
-      <DependentUpon>FormListarLIstas.vb</DependentUpon>
+    <EmbeddedResource Include="FormListarListas.resx">
+      <DependentUpon>FormListarListas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormREGISTRONET.resx">
       <DependentUpon>FormREGISTRONET.vb</DependentUpon>
