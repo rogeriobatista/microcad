@@ -49,7 +49,7 @@ Public Class ImportarListas
     End Function
 
     Public Shared Function ObterListaRegistronet() As List(Of Email)
-        Dim url As String = "http://localhost:3333/api/listRegistronet"
+        Dim url As String = "http://localhost:3333/api/registronet"
         Dim response As String
 
         Using webClient As New WebClient
@@ -59,7 +59,11 @@ Public Class ImportarListas
             response = Encoding.Default.GetString(webClient.DownloadData(url))
         End Using
 
-        Return JsonConvert.DeserializeObject(Of List(Of Email))(response)
+        Dim list = JsonConvert.DeserializeObject(Of List(Of Email))(response)
+
+        list = list.Where(Function(x) x.nserie.StartsWith("T") Or x.nserie.StartsWith("M"))
+
+        Return list.Select(Function(x) CreateEmailFromRegistronet(x)).ToList()
     End Function
 
     Public Shared Function Salvar(emails As List(Of Email)) As List(Of Email)
@@ -77,7 +81,7 @@ Public Class ImportarListas
         Return JsonConvert.DeserializeObject(Of List(Of Email))(response)
     End Function
 
-    Public Shared Function CreateEmailFromRegistronet(email As Email) As Email
+    Private Shared Function CreateEmailFromRegistronet(email As Email) As Email
 
         Return New Email With
         {

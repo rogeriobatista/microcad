@@ -34,7 +34,6 @@ routes.get('/api/dadostxt',                            LicenseController.dadostx
 routes.get('/api/naoreg',                              LicenseController.naoreg);
 routes.get('/api/registro',                            LicenseController.registro);
 routes.get('/api/registronet',                         LicenseController.registronet);
-routes.get('/api/listRegistronet',                     LicenseController.listRegistronet);
 routes.get('/api/xemail',                              LicenseController.xemail);
 //
 routes.get('/api/emails',                              LicenseController.listEmails);

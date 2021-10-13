@@ -29,9 +29,6 @@
         Dim listaRegistronet = ImportarListas.ObterListaRegistronet()
 
         If listaRegistronet.Count > 0 Then
-
-            listaRegistronet = listaRegistronet.Select(Function(x) ImportarListas.CreateEmailFromRegistronet(x)).ToList()
-
             emailsToImport.AddRange(listaRegistronet)
         End If
 

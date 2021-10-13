@@ -49,19 +49,6 @@ class LicenseController {
       return res.json(await TBLRegistronet.findAll());
    }
 
-   async listRegistronet(req, res) {
-      return res.json(await TBLRegistronet.findAll(
-         {
-            where: 
-            {
-               email: { [Op.ne]: null, [Op.ne]: 'X', [Op.ne]: '' },
-               nserie: { [Op.ne]: 'XXXXXXX', [Op.startsWith]: 'T', [Op.startsWith]: 'M' }
-
-            }
-         }
-      ));
-   }
-
    async xemail(req, res) {
       return res.json(await TBLXemail.findAll())
    }
