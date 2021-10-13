@@ -48,8 +48,22 @@ Public Class ImportarListas
         Return importedEmails
     End Function
 
+    Public Shared Function ObterListaRegistronet() As List(Of Email)
+        Dim url As String = "http://localhost:3333/api/listRegistronet"
+        Dim response As String
+
+        Using webClient As New WebClient
+            webClient.Encoding = Encoding.UTF8
+            webClient.Headers("content-type") = "application/json"
+
+            response = Encoding.Default.GetString(webClient.DownloadData(url))
+        End Using
+
+        Return JsonConvert.DeserializeObject(Of List(Of Email))(response)
+    End Function
+
     Public Shared Function Salvar(emails As List(Of Email)) As List(Of Email)
-        Dim url As String = "http://localhost:3333/api/emails/import"
+        Dim url As String = "http://localhost:3333/api/emails/update"
         Dim response As String
 
         Using webClient As New WebClient
@@ -61,6 +75,27 @@ Public Class ImportarListas
         End Using
 
         Return JsonConvert.DeserializeObject(Of List(Of Email))(response)
+    End Function
+
+    Public Shared Function CreateEmailFromRegistronet(email As Email) As Email
+
+        Return New Email With
+        {
+            .email = email.email,
+            .nserie = "TXXBBB",
+            .data = FormatDate(email.data)
+        }
+    End Function
+
+    Private Shared Function FormatDate(data As String) As String
+
+        If String.IsNullOrWhiteSpace(data) Then
+            Return "AAMMDD"
+        End If
+
+        Dim splitedDate = data.Split("/")
+
+        Return splitedDate.Last().Substring(2) + splitedDate(1) + splitedDate(0)
     End Function
 
     Private Shared Function CreateEmail(line As String) As Email

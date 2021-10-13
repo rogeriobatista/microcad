@@ -7,6 +7,7 @@ class TBLXemail extends Model {
             id: {
                type: Sequelize.INTEGER,
                primaryKey: true,
+               autoIncrement: true
             },
             nserie: Sequelize.STRING,
             email: Sequelize.STRING,

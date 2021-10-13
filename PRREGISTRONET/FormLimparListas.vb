@@ -6,7 +6,7 @@
     Private Sub BtnLimpar_Click(sender As Object, e As EventArgs) Handles BtnLimpar.Click
         PBLimparListas.Value = 100
 
-        Dim emails = LimparListas.ImportarCSV("LISTA-XXXXXXXX.CSV")
+        Dim emails = LimparListas.ImportarCSV("D:\Projects\Felix\microcad\REGISTRONET-LISTAS\LISTA-XXXXXXXX.CSV")
 
         Dim emailsLimpos = LimparListas.Limpar(emails)
 

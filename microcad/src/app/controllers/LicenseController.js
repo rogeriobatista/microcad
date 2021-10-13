@@ -49,6 +49,19 @@ class LicenseController {
       return res.json(await TBLRegistronet.findAll());
    }
 
+   async listRegistronet(req, res) {
+      return res.json(await TBLRegistronet.findAll(
+         {
+            where: 
+            {
+               email: { [Op.ne]: null, [Op.ne]: 'X', [Op.ne]: '' },
+               nserie: { [Op.ne]: 'XXXXXXX', [Op.startsWith]: 'T', [Op.startsWith]: 'M' }
+
+            }
+         }
+      ));
+   }
+
    async xemail(req, res) {
       return res.json(await TBLXemail.findAll())
    }
@@ -57,47 +70,48 @@ class LicenseController {
       return res.json(await TBLXemail.findAll({
          where: { 
             nserie: {
-               [Op.ne]: 'XXXXXXXX'
+               [Op.ne]: 'XXXXXXX'
             }
          }
       }))
    }
 
-   async importEmails(req, res) {
+   async updateEmails(req, res) {
       const { emails } = req.body
 
       if (!!emails) {
-         const importedEmails = await TBLXemail.bulkCreate(emails);
-         return res.json(importedEmails);
-      }
-   }
-
-   async clearEmails(req, res) {
-      const { emails } = req.body
-
-      if (!!emails) {
-
-         const clearedEmails = []
 
          emails.forEach(async item => {
-            clearedEmails.push(await TBLXemail.update(item, { where: { email: item.email} }));
+
+            const { id, nserie, email, data } = item;
+            
+            const emailsExists = await TBLXemail.findOne({where: { email: email }})
+
+            if (emailsExists) {
+               await TBLXemail.update({ nserie, email, data }, { where: { email: email } });
+            }
+            else {
+               await TBLXemail.create({ nserie: nserie, email: email, data: data });
+            }
          })
 
-         return res.json(clearedEmails);
+         return res.json(emails);
       }
-   }
 
+      return res.json([]);
+   }
    //
    //MICROCAD
    async microcad(req, res) {
       const {nserie, uname, cname } = req.query
+      console.log(nserie, uname, cname)
       const licences =
       [
          {nserie: 'REGV01',uname: 'FELIX'     ,cname: '5-FELIX'},
          {nserie: 'REGV01',uname: 'FELIX'     ,cname: 'FELIX-PC1'},
          {nserie: 'REGV01',uname: 'FELIX'     ,cname: 'FELIX-PC2'},
          {nserie: 'REGV01',uname: 'PLOTAGEM 4',cname: '4-PLOTAGEM'},
-         {nserie: 'REGV01',uname: 'ROGERIO'   ,cname: 'DESKTOP-4JSI2L2'}
+         {nserie: 'REGV01',uname: 'ROGERIO BATISTA'   ,cname: 'DESKTOP-J5RQF1S'}
       ]
       const valid = licences.some(x => x.nserie == nserie && x.uname == uname && x.cname == cname)
       return res.json({ valid: valid })

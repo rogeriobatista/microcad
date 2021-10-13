@@ -34,11 +34,11 @@ routes.get('/api/dadostxt',                            LicenseController.dadostx
 routes.get('/api/naoreg',                              LicenseController.naoreg);
 routes.get('/api/registro',                            LicenseController.registro);
 routes.get('/api/registronet',                         LicenseController.registronet);
+routes.get('/api/listRegistronet',                     LicenseController.listRegistronet);
 routes.get('/api/xemail',                              LicenseController.xemail);
 //
 routes.get('/api/emails',                              LicenseController.listEmails);
-routes.post('/api/emails/import',                      LicenseController.importEmails);
-routes.post('/api/emails/clear',                       LicenseController.clearEmails);
+routes.post('/api/emails/update',                      LicenseController.updateEmails);
 //
 routes.get('/apimicrocad',                             LicenseController.microcad);
 //

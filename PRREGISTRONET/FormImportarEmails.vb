@@ -26,6 +26,15 @@
             RTBDetalhes.Text += emailsToImport.Count().ToString() & " emails processados" & vbNewLine
         Next
 
+        Dim listaRegistronet = ImportarListas.ObterListaRegistronet()
+
+        If listaRegistronet.Count > 0 Then
+
+            listaRegistronet = listaRegistronet.Select(Function(x) ImportarListas.CreateEmailFromRegistronet(x)).ToList()
+
+            emailsToImport.AddRange(listaRegistronet)
+        End If
+
         RTBDetalhes.Text += "==================== Importando Emails ====================" & vbNewLine
 
         Dim importedEmails = ImportarListas.Salvar(emailsToImport)
