@@ -63,6 +63,15 @@ class LicenseController {
       }))
    }
 
+   async getEmail(req, res) {
+      const { email } = req.params
+      return res.json(await TBLXemail.findOne({
+         where: { 
+            email: email
+         }
+      }))
+   }
+
    async importEmails(req, res) {
       req.setTimeout(1000000)
       const { emails } = req.body
@@ -91,6 +100,9 @@ class LicenseController {
 
             if (emailsExists && emailsExists.nserie !== 'XXXXXXX') {
                await TBLXemail.update({ nserie, email, data }, { where: { email: email } });
+            }
+            else {
+               await TBLXemail.create({ nserie: nserie, email: email, data: data });
             }
          })
 

@@ -14,32 +14,51 @@
 
         Dim selectedLists = CLBImportarEmails.CheckedItems
 
-        Dim emailsToImport = New List(Of Email)
+        Dim emailsToValidate = New List(Of Email)
 
         For Each list As String In selectedLists
             RTBDetalhes.Text += "Processando " & list.Split("\").Last() & vbNewLine
             If (list.Split(".").Last() = "TXT") Then
-                emailsToImport.AddRange(ImportarListas.ImportarTXT(list))
+                emailsToValidate.AddRange(ImportarListas.ImportarTXT(list))
             Else
-                emailsToImport.AddRange(ImportarListas.ImportarCSV(list))
+                emailsToValidate.AddRange(ImportarListas.ImportarCSV(list))
             End If
-            RTBDetalhes.Text += emailsToImport.Count().ToString() & " emails processados" & vbNewLine
+            RTBDetalhes.Text += emailsToValidate.Count().ToString() & " emails processados" & vbNewLine
         Next
 
         Dim listaRegistronet = ImportarListas.ObterListaRegistronet()
 
         If listaRegistronet.Count > 0 Then
-            emailsToImport.AddRange(listaRegistronet)
+            emailsToValidate.AddRange(listaRegistronet)
         End If
+
+        RTBDetalhes.Text += "================ Validando Emails ================" & vbNewLine
+
+        Dim emailsToImport = New List(Of Email)
+        Dim order As Integer = 0
+        For Each email As Email In emailsToValidate
+            If (Not ImportarListas.EmailInvalido(email)) Then
+                email.id = order
+                order += 1
+                emailsToImport.Add(email)
+            End If
+
+        Next
 
         RTBDetalhes.Text += "================ Importando Emails ================" & vbNewLine
 
-        Dim importedEmails = ImportarListas.Salvar(emailsToImport)
+        Dim index As Integer = 0
+        Dim lote As Integer = 5
+        While index <= emailsToImport.Count
+            Dim emails = emailsToImport.Where(Function(x) x.id > index).Take(lote).ToList()
+            emailsToImport = ImportarListas.Salvar(emailsToImport)
+            index += lote
+        End While
 
         RTBDetalhes.Text += "==================== Concluído ====================" & vbNewLine
 
-        If importedEmails.Count() > 0 Then
-            Dim successMessage = importedEmails.Count().ToString() & " emails importados com sucesso!"
+        If emailsToImport.Count() > 0 Then
+            Dim successMessage = emailsToImport.Count().ToString() & " emails importados com sucesso!"
             RTBDetalhes.Text += successMessage & vbNewLine
             MessageBox.Show(successMessage)
         Else

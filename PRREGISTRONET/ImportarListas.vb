@@ -16,7 +16,7 @@ Public Class ImportarListas
                 Dim line = objReader.ReadLine()
 
                 If line.Contains("@") Then
-                    importedEmails.Add(CreateEmail(line))
+                    importedEmails.Add(CreateEmailFromTXT(line))
                 End If
             Loop
         Else
@@ -38,7 +38,7 @@ Public Class ImportarListas
                 Dim line = objReader.ReadLine()
 
                 If line.Contains("@") Then
-                    importedEmails.Add(CreateEmail(line))
+                    importedEmails.Add(CreateEmailFromCSV(line))
                 End If
             Loop
         Else
@@ -46,6 +46,23 @@ Public Class ImportarListas
         End If
 
         Return importedEmails
+    End Function
+
+    Public Shared Function EmailInvalido(email As Email) As Boolean
+        Dim url As String = "http://localhost:3333/api/emails/" + email.email
+        Dim response As String
+
+        Using webClient As New WebClient
+            webClient.Encoding = Encoding.UTF8
+            webClient.Headers("content-type") = "application/json"
+
+            response = Encoding.Default.GetString(webClient.DownloadData(url))
+        End Using
+
+        Dim receivedEmail = JsonConvert.DeserializeObject(Of Email)(response)
+
+        Return IIf(receivedEmail IsNot Nothing AndAlso receivedEmail.nserie = "XXXXXXX", True, False)
+
     End Function
 
     Public Shared Function ObterListaRegistronet() As List(Of Email)
@@ -100,11 +117,19 @@ Public Class ImportarListas
         Return splitedDate.Last().Substring(2) + splitedDate(1) + splitedDate(0)
     End Function
 
-    Private Shared Function CreateEmail(line As String) As Email
+    Private Shared Function CreateEmailFromTXT(line As String) As Email
         Return New Email With {
-            .Email = line.Split(":").Last(),
-            .Nserie = "TXXBBB",
-            .Data = DateTime.Now.ToString("yyMMdd")
+            .email = line.Split(":").Last(),
+            .nserie = "TXXBBB",
+            .data = DateTime.Now.ToString("yyMMdd")
+        }
+    End Function
+
+    Private Shared Function CreateEmailFromCSV(line As String) As Email
+        Return New Email With {
+            .email = line.Split(",").Last().Replace("""", ""),
+            .nserie = "TXXBBB",
+            .data = DateTime.Now.ToString("yyMMdd")
         }
     End Function
 End Class
