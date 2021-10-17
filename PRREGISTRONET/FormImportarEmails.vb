@@ -32,7 +32,7 @@
             emailsToImport.AddRange(listaRegistronet)
         End If
 
-        RTBDetalhes.Text += "==================== Importando Emails ====================" & vbNewLine
+        RTBDetalhes.Text += "================ Importando Emails ================" & vbNewLine
 
         Dim importedEmails = ImportarListas.Salvar(emailsToImport)
 

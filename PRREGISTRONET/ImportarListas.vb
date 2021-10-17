@@ -61,20 +61,18 @@ Public Class ImportarListas
 
         Dim list = JsonConvert.DeserializeObject(Of List(Of Email))(response)
 
-        list = list.Where(Function(x) x.nserie.StartsWith("T") Or x.nserie.StartsWith("M"))
-
-        Return list.Select(Function(x) CreateEmailFromRegistronet(x)).ToList()
+        Return list.Where(Function(x) Not x.nserie.Equals("XXXXXXX") And Not x.nserie.Equals("X") And Not String.IsNullOrEmpty(x.email) And (x.nserie.StartsWith("T") Or x.nserie.StartsWith("M"))).Select(Function(x) CreateEmailFromRegistronet(x)).ToList()
     End Function
 
     Public Shared Function Salvar(emails As List(Of Email)) As List(Of Email)
-        Dim url As String = "http://localhost:3333/api/emails/update"
+        Dim url As String = "http://localhost:3333/api/emails/import"
         Dim response As String
 
         Using webClient As New WebClient
             webClient.Encoding = Encoding.UTF8
             webClient.Headers("content-type") = "application/json"
 
-            Dim data() As Byte = Encoding.Default.GetBytes(JsonConvert.SerializeObject(emails, Formatting.Indented))
+            Dim data() As Byte = Encoding.Default.GetBytes(JsonConvert.SerializeObject(New With {Key .emails = emails}, Formatting.Indented))
             response = Encoding.Default.GetString(webClient.UploadData(url, "post", data))
         End Using
 

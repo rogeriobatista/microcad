@@ -12,7 +12,8 @@ import './database';
 class App {
    constructor() {
       this.server = express();
-      this.server.use(express.json());
+      this.server.use(express.json({limit: '50mb'}));
+      //this.server.use(express.json());
 
       // this.middlewares();
 

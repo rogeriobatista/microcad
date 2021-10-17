@@ -63,7 +63,22 @@ class LicenseController {
       }))
    }
 
+   async importEmails(req, res) {
+      req.setTimeout(1000000)
+      const { emails } = req.body
+
+      if (!!emails) {
+
+         await TBLXemail.bulkCreate(emails)
+
+         return res.json(emails);
+      }
+
+      return res.json([]);
+   }
+
    async updateEmails(req, res) {
+      req.setTimeout(1000000)
       const { emails } = req.body
 
       if (!!emails) {
@@ -74,7 +89,30 @@ class LicenseController {
             
             const emailsExists = await TBLXemail.findOne({where: { email: email }})
 
-            if (emailsExists) {
+            if (emailsExists && emailsExists.nserie !== 'XXXXXXX') {
+               await TBLXemail.update({ nserie, email, data }, { where: { email: email } });
+            }
+         })
+
+         return res.json(emails);
+      }
+
+      return res.json([]);
+   }
+
+   async clearEmails(req, res) {
+      req.setTimeout(1000000)
+      const { emails } = req.body
+
+      if (!!emails) {
+
+         emails.forEach(async item => {
+
+            const { id, nserie, email, data } = item;
+            
+            const emailsExists = await TBLXemail.findOne({where: { email: email }})
+
+            if (emailsExists && emailsExists.nserie !== 'XXXXXXX') {
                await TBLXemail.update({ nserie, email, data }, { where: { email: email } });
             }
             else {
@@ -87,6 +125,7 @@ class LicenseController {
 
       return res.json([]);
    }
+
    //
    //MICROCAD
    async microcad(req, res) {
