@@ -76,40 +76,30 @@ class LicenseController {
       req.setTimeout(1000000)
       const { emails } = req.body
 
-      if (!!emails) {
-
-         await TBLXemail.bulkCreate(emails)
-
-         return res.json(emails);
-      }
-
-      return res.json([]);
-   }
-
-   async updateEmails(req, res) {
-      req.setTimeout(1000000)
-      const { emails } = req.body
+      const updatesEmails = []
 
       if (!!emails) {
 
-         emails.forEach(async item => {
-
-            const { id, nserie, email, data } = item;
-            
+         const promises = emails.map(async(item) => {
+            const { nserie, email, data, isRegistronet } = item;
+               
             const emailsExists = await TBLXemail.findOne({where: { email: email }})
 
-            if (emailsExists && emailsExists.nserie !== 'XXXXXXX') {
-               await TBLXemail.update({ nserie, email, data }, { where: { email: email } });
+            if (emailsExists && isRegistronet && emailsExists.nserie !== 'XXXXXXX') {
+               updatesEmails.push(item)
+               return TBLXemail.update({ nserie, email, data }, { where: { email: email } });
             }
-            else {
-               await TBLXemail.create({ nserie: nserie, email: email, data: data });
+
+            if (!emailsExists) {
+               updatesEmails.push(item)
+               return TBLXemail.create({ nserie: nserie, email: email, data: data });
             }
          })
 
-         return res.json(emails);
+         Promise.all(promises).then(() => { return res.json(updatesEmails); })
+      } else {
+         return res.json([]);
       }
-
-      return res.json([]);
    }
 
    async clearEmails(req, res) {

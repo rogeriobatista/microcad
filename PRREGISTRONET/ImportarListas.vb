@@ -48,7 +48,7 @@ Public Class ImportarListas
         Return importedEmails
     End Function
 
-    Public Shared Function EmailInvalido(email As Email) As Boolean
+    Public Shared Function EmailValido(email As Email) As Boolean
         Dim url As String = "http://localhost:3333/api/emails/" + email.email
         Dim response As String
 
@@ -61,7 +61,7 @@ Public Class ImportarListas
 
         Dim receivedEmail = JsonConvert.DeserializeObject(Of Email)(response)
 
-        Return IIf(receivedEmail IsNot Nothing AndAlso receivedEmail.nserie = "XXXXXXX", True, False)
+        Return IIf(receivedEmail Is Nothing Or Not receivedEmail.nserie = "XXXXXXX", True, False)
 
     End Function
 
@@ -102,7 +102,8 @@ Public Class ImportarListas
         {
             .email = email.email,
             .nserie = "TXXBBB",
-            .data = FormatDate(email.data)
+            .data = FormatDate(email.data),
+            .isRegistronet = True
         }
     End Function
 

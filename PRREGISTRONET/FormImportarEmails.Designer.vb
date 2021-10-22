@@ -24,10 +24,9 @@ Partial Class FormImportarEmails
     Private Sub InitializeComponent()
         Me.BtnSair = New System.Windows.Forms.Button()
         Me.BtnImportar = New System.Windows.Forms.Button()
-        Me.CLBImportarEmails = New System.Windows.Forms.CheckedListBox()
         Me.RTBDetalhes = New System.Windows.Forms.RichTextBox()
         Me.LblDetalhes = New System.Windows.Forms.Label()
-        Me.LblListas = New System.Windows.Forms.Label()
+        Me.PGBImportarListas = New System.Windows.Forms.ProgressBar()
         Me.SuspendLayout()
         '
         'BtnSair
@@ -48,40 +47,30 @@ Partial Class FormImportarEmails
         Me.BtnImportar.Text = "Importar"
         Me.BtnImportar.UseVisualStyleBackColor = True
         '
-        'CLBImportarEmails
-        '
-        Me.CLBImportarEmails.FormattingEnabled = True
-        Me.CLBImportarEmails.Location = New System.Drawing.Point(12, 30)
-        Me.CLBImportarEmails.Name = "CLBImportarEmails"
-        Me.CLBImportarEmails.Size = New System.Drawing.Size(318, 64)
-        Me.CLBImportarEmails.TabIndex = 2
-        '
         'RTBDetalhes
         '
-        Me.RTBDetalhes.Location = New System.Drawing.Point(12, 113)
+        Me.RTBDetalhes.Location = New System.Drawing.Point(12, 25)
         Me.RTBDetalhes.Name = "RTBDetalhes"
         Me.RTBDetalhes.ReadOnly = True
-        Me.RTBDetalhes.Size = New System.Drawing.Size(318, 100)
+        Me.RTBDetalhes.Size = New System.Drawing.Size(318, 159)
         Me.RTBDetalhes.TabIndex = 3
         Me.RTBDetalhes.Text = ""
         '
         'LblDetalhes
         '
         Me.LblDetalhes.AutoSize = True
-        Me.LblDetalhes.Location = New System.Drawing.Point(12, 97)
+        Me.LblDetalhes.Location = New System.Drawing.Point(12, 9)
         Me.LblDetalhes.Name = "LblDetalhes"
         Me.LblDetalhes.Size = New System.Drawing.Size(49, 13)
         Me.LblDetalhes.TabIndex = 4
         Me.LblDetalhes.Text = "Detalhes"
         '
-        'LblListas
+        'PGBImportarListas
         '
-        Me.LblListas.AutoSize = True
-        Me.LblListas.Location = New System.Drawing.Point(12, 14)
-        Me.LblListas.Name = "LblListas"
-        Me.LblListas.Size = New System.Drawing.Size(34, 13)
-        Me.LblListas.TabIndex = 5
-        Me.LblListas.Text = "Listas"
+        Me.PGBImportarListas.Location = New System.Drawing.Point(12, 190)
+        Me.PGBImportarListas.Name = "PGBImportarListas"
+        Me.PGBImportarListas.Size = New System.Drawing.Size(318, 23)
+        Me.PGBImportarListas.TabIndex = 5
         '
         'FormImportarEmails
         '
@@ -90,10 +79,9 @@ Partial Class FormImportarEmails
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(342, 250)
         Me.ControlBox = False
-        Me.Controls.Add(Me.LblListas)
+        Me.Controls.Add(Me.PGBImportarListas)
         Me.Controls.Add(Me.LblDetalhes)
         Me.Controls.Add(Me.RTBDetalhes)
-        Me.Controls.Add(Me.CLBImportarEmails)
         Me.Controls.Add(Me.BtnImportar)
         Me.Controls.Add(Me.BtnSair)
         Me.Name = "FormImportarEmails"
@@ -106,8 +94,7 @@ Partial Class FormImportarEmails
 
     Friend WithEvents BtnSair As Button
     Friend WithEvents BtnImportar As Button
-    Friend WithEvents CLBImportarEmails As CheckedListBox
     Friend WithEvents RTBDetalhes As RichTextBox
     Friend WithEvents LblDetalhes As Label
-    Friend WithEvents LblListas As Label
+    Friend WithEvents PGBImportarListas As ProgressBar
 End Class

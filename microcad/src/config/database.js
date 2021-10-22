@@ -10,8 +10,8 @@ module.exports = {
    password: process.env.DB_PASS,
    database: process.env.DB_NAME,
    dialectOptions: {
-      requestTimeout: 3000000,
       options: {
+         requestTimeout: 300000,
          encrypt: true,
          validateBulkLoadParameters: true,
        }
