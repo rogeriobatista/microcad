@@ -10,30 +10,30 @@
 
         RTBDetalhes.Text += "================ Importando Emails ================" & vbNewLine
 
-        Const listsPath As String = "C:\REGISTRONET-LISTAS"
+        Const PATH_LISTS As String = "C:\REGISTRONET-LISTAS"
 
         Dim selectedLists = New List(Of String) From {
-            listsPath + "\LISTA-DADOSDAT.TXT",
-            listsPath + "\LISTA-DADOSLIS.CSV",
-            listsPath + "\LISTA-DADOSOUT.CSV",
-            listsPath + "\LISTA-DADOSWIX.CSV"
+            PATH_LISTS + "\LISTA-DADOSDAT.TXT",
+            PATH_LISTS + "\LISTA-DADOSLIS.CSV",
+            PATH_LISTS + "\LISTA-DADOSOUT.CSV",
+            PATH_LISTS + "\LISTA-DADOSWIX.CSV"
         }
 
-        For Each list As String In selectedLists
+        'For Each list As String In selectedLists
 
-            Dim emailsToImport
+        '    Dim emailsToImport
 
-            If (list.Split(".").Last() = "TXT") Then
-                emailsToImport = ImportarListas.ImportarTXT(list)
-            Else
-                emailsToImport = ImportarListas.ImportarCSV(list)
-            End If
+        '    If (list.Split(".").Last() = "TXT") Then
+        '        emailsToImport = ImportarListas.ImportarTXT(list)
+        '    Else
+        '        emailsToImport = ImportarListas.ImportarCSV(list)
+        '    End If
 
-            ImportarLista(emailsToImport, list.Split("\").Last())
+        '    ImportarLista(OrdenarLista(emailsToImport), list.Split("\").Last())
 
-        Next
+        'Next
 
-        'ImportarLista(ImportarListas.ObterListaRegistronet(), "Registronet")
+        ImportarLista(OrdenarLista(ImportarListas.ObterListaRegistronet()), "Registronet")
     End Sub
 
     Private Sub ImportarLista(emailsToImport As List(Of Email), listName As String)
@@ -44,7 +44,16 @@
 
         MessageBox.Show(startMessage)
 
-        Dim importedEmails = ImportarListas.Salvar(emailsToImport)
+        Dim index = 0
+        Dim lote = 500
+        Dim importedEmails = New List(Of Email)
+        While (index <= emailsToImport.Count)
+            Dim emails = emailsToImport.Where(Function(x) x.ordem > index).Take(lote).ToList()
+
+            importedEmails.AddRange(ImportarListas.Salvar(emails))
+
+            index += lote
+        End While
 
         RTBDetalhes.Text += "==================== Concluído ====================" & vbNewLine
 
@@ -62,4 +71,16 @@
         PGBImportarListas.Value += 20
 
     End Sub
+
+    Private Shared Function OrdenarLista(lista As List(Of Email)) As List(Of Email)
+
+        Dim ordem = 1
+        For Each item As Email In lista
+            item.ordem = ordem
+            ordem += 1
+        Next
+
+
+        Return lista
+    End Function
 End Class

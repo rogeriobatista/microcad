@@ -48,23 +48,6 @@ Public Class ImportarListas
         Return importedEmails
     End Function
 
-    Public Shared Function EmailValido(email As Email) As Boolean
-        Dim url As String = "http://localhost:3333/api/emails/" + email.email
-        Dim response As String
-
-        Using webClient As New WebClient
-            webClient.Encoding = Encoding.UTF8
-            webClient.Headers("content-type") = "application/json"
-
-            response = Encoding.Default.GetString(webClient.DownloadData(url))
-        End Using
-
-        Dim receivedEmail = JsonConvert.DeserializeObject(Of Email)(response)
-
-        Return IIf(receivedEmail Is Nothing Or Not receivedEmail.nserie = "XXXXXXX", True, False)
-
-    End Function
-
     Public Shared Function ObterListaRegistronet() As List(Of Email)
         Dim url As String = "http://localhost:3333/api/registronet"
         Dim response As String
@@ -103,7 +86,7 @@ Public Class ImportarListas
             .email = email.email,
             .nserie = "TXXBBB",
             .data = FormatDate(email.data),
-            .isRegistronet = True
+            .origem = "Registronet"
         }
     End Function
 
@@ -120,17 +103,19 @@ Public Class ImportarListas
 
     Private Shared Function CreateEmailFromTXT(line As String) As Email
         Return New Email With {
-            .email = line.Split(":").Last(),
+            .email = line.Split(":").FirstOrDefault(Function(x) x.Contains("@")),
             .nserie = "TXXBBB",
-            .data = DateTime.Now.ToString("yyMMdd")
+            .data = DateTime.Now.ToString("yyMMdd"),
+            .origem = "ListaTXT"
         }
     End Function
 
     Private Shared Function CreateEmailFromCSV(line As String) As Email
         Return New Email With {
-            .email = line.Split(",").Last().Replace("""", ""),
+            .email = line.Split(",").FirstOrDefault(Function(x) x.Contains("@")).Replace("""", ""),
             .nserie = "TXXBBB",
-            .data = DateTime.Now.ToString("yyMMdd")
+            .data = DateTime.Now.ToString("yyMMdd"),
+            .origem = "ListaCSV"
         }
     End Function
 End Class

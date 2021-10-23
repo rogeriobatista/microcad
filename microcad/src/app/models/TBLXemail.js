@@ -12,6 +12,7 @@ class TBLXemail extends Model {
             nserie: Sequelize.STRING,
             email: Sequelize.STRING,
             data: Sequelize.STRING,
+            origem: Sequelize.STRING
          },
          {
             sequelize,

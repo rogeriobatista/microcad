@@ -76,27 +76,28 @@ class LicenseController {
       req.setTimeout(1000000)
       const { emails } = req.body
 
-      const updatesEmails = []
-
       if (!!emails) {
 
+         const updatedEmails = []
+
          const promises = emails.map(async(item) => {
-            const { nserie, email, data, isRegistronet } = item;
-               
+            const { nserie, email, data, origem } = item;
+
             const emailsExists = await TBLXemail.findOne({where: { email: email }})
 
-            if (emailsExists && isRegistronet && emailsExists.nserie !== 'XXXXXXX') {
-               updatesEmails.push(item)
-               return TBLXemail.update({ nserie, email, data }, { where: { email: email } });
+            if (origem === 'Registronet' && emailsExists && emailsExists.nserie !== 'XXXXXXX' && emailsExists.nserie !== nserie) {
+               updatedEmails.push(item)
+               return TBLXemail.update({ nserie, email, data, origem }, { where: { email: email } });
             }
 
             if (!emailsExists) {
-               updatesEmails.push(item)
-               return TBLXemail.create({ nserie: nserie, email: email, data: data });
+               updatedEmails.push(item)
+               return TBLXemail.create({ nserie: nserie, email: email, data: data, origem: origem });
             }
          })
 
-         Promise.all(promises).then(() => { return res.json(updatesEmails); })
+         Promise.all(promises).then(() => res.json(updatedEmails))
+
       } else {
          return res.json([]);
       }
