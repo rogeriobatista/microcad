@@ -19,19 +19,19 @@
             PATH_LISTS + "\LISTA-DADOSWIX.CSV"
         }
 
-        'For Each list As String In selectedLists
+        For Each list As String In selectedLists
 
-        '    Dim emailsToImport
+            Dim emailsToImport
 
-        '    If (list.Split(".").Last() = "TXT") Then
-        '        emailsToImport = ImportarListas.ImportarTXT(list)
-        '    Else
-        '        emailsToImport = ImportarListas.ImportarCSV(list)
-        '    End If
+            If (list.Split(".").Last() = "TXT") Then
+                emailsToImport = ImportarListas.ImportarTXT(list)
+            Else
+                emailsToImport = ImportarListas.ImportarCSV(list)
+            End If
 
-        '    ImportarLista(OrdenarLista(emailsToImport), list.Split("\").Last())
+            ImportarLista(OrdenarLista(emailsToImport), list.Split("\").Last())
 
-        'Next
+        Next
 
         ImportarLista(OrdenarLista(ImportarListas.ObterListaRegistronet()), "Registronet")
     End Sub

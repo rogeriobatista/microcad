@@ -49,7 +49,7 @@ Public Class ImportarListas
     End Function
 
     Public Shared Function ObterListaRegistronet() As List(Of Email)
-        Dim url As String = "http://localhost:3333/api/registronet"
+        Dim url As String = "https://microcad.azurewebsites.net/api/registronet"
         Dim response As String
 
         Using webClient As New WebClient
@@ -65,7 +65,7 @@ Public Class ImportarListas
     End Function
 
     Public Shared Function Salvar(emails As List(Of Email)) As List(Of Email)
-        Dim url As String = "http://localhost:3333/api/emails/import"
+        Dim url As String = "https://microcad.azurewebsites.net/api/emails/import"
         Dim response As String
 
         Using webClient As New WebClient

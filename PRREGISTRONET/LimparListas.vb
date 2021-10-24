@@ -26,7 +26,7 @@ Public Class LimparListas
     End Function
 
     Public Shared Function Limpar(emails As List(Of Email)) As List(Of Email)
-        Dim url As String = "http://localhost:3333/api/emails/clear"
+        Dim url As String = "https://microcad.azurewebsites.net/api/emails/clear"
         Dim response As String
 
         Using webClient As New WebClient
