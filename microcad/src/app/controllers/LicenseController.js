@@ -73,6 +73,15 @@ class LicenseController {
    }
 
    async importEmails(req, res) {
+
+      function uniqBy(list) {
+         let seen = new Set();
+         return list.filter(item => {
+             let k = item.email;
+             return seen.has(k) ? false : seen.add(k);
+         });
+      }
+
       req.setTimeout(1000000)
       const { emails } = req.body
 
@@ -80,19 +89,19 @@ class LicenseController {
 
          const updatedEmails = []
 
-         const promises = emails.map(async(item) => {
+         const promises = uniqBy(emails).map(async(item) => {
             const { nserie, email, data, origem } = item;
 
             const emailsExists = await TBLXemail.findOne({where: { email: email }})
 
             if (origem === 'Registronet' && emailsExists && emailsExists.nserie !== 'XXXXXXX' && emailsExists.nserie !== nserie) {
                updatedEmails.push(item)
-               return TBLXemail.update({ nserie, email, data, origem }, { where: { email: email } });
+               return await TBLXemail.update({ nserie, email, data, origem }, { where: { email: email } });
             }
 
             if (!emailsExists) {
                updatedEmails.push(item)
-               return TBLXemail.create({ nserie: nserie, email: email, data: data, origem: origem });
+               return await TBLXemail.create({ nserie: nserie, email: email, data: data, origem: origem });
             }
          })
 

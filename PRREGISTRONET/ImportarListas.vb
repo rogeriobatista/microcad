@@ -62,7 +62,7 @@ Public Class ImportarListas
 
         Dim list = JsonConvert.DeserializeObject(Of List(Of Email))(response)
 
-        Return list.Where(Function(x) Not x.nserie.Equals("XXXXXXX") And Not x.email.Equals("X") And Not String.IsNullOrEmpty(x.email) And (x.nserie.StartsWith("T") Or x.nserie.StartsWith("M"))).Select(Function(x) CreateEmailFromRegistronet(x)).ToList()
+        Return list.Where(Function(x) Not x.nserie.Equals("XXXXXXX") And Not String.IsNullOrEmpty(x.email) And x.email.Contains("@") And (x.nserie.StartsWith("T") Or x.nserie.StartsWith("M"))).Select(Function(x) CreateEmailFromRegistronet(x)).ToList()
     End Function
 
     Public Shared Function Salvar(emails As List(Of Email)) As List(Of Email)
