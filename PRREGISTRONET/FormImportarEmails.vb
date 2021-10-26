@@ -23,10 +23,12 @@
 
             Dim emailsToImport
 
+            Dim origin = list.Split("\").Last().Split(".").First()
+
             If (list.Split(".").Last() = "TXT") Then
-                emailsToImport = ImportarListas.ImportarTXT(list)
+                emailsToImport = ImportarListas.ImportarTXT(list, origin)
             Else
-                emailsToImport = ImportarListas.ImportarCSV(list)
+                emailsToImport = ImportarListas.ImportarCSV(list, origin)
             End If
 
             ImportarLista(OrdenarLista(emailsToImport), list.Split("\").Last())
@@ -55,18 +57,22 @@
             index += lote
         End While
 
-        RTBDetalhes.Text += "==================== Concluído ====================" & vbNewLine
-
         If importedEmails.Count() > 0 Then
 
-            Dim successMessage = importedEmails.Count().ToString() & " emails importados com sucesso!"
+            Dim successMessage = emailsToImport.Count().ToString() & " lidos / " & importedEmails.Count().ToString() & " emails importados"
 
             RTBDetalhes.Text += successMessage & vbNewLine
 
             MessageBox.Show(successMessage)
         Else
-            MessageBox.Show("Nenhum email foi importado!")
+            Dim errorMessage = "Nenhum email foi importado!"
+
+            RTBDetalhes.Text += errorMessage & vbNewLine
+
+            MessageBox.Show(errorMessage)
         End If
+
+        RTBDetalhes.Text += "==================== Concluído ====================" & vbNewLine
 
         PGBImportarListas.Value += 20
 

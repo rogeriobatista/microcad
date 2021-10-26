@@ -32,11 +32,9 @@ Public Class ListarListas
         outFile.WriteLine("Email")
 
         For Each item As Email In lista
-            outFile.WriteLine(item.email)
+            outFile.WriteLine(item.nserie & "," & item.email)
         Next
 
         outFile.Close()
-
-        Console.WriteLine(My.Computer.FileSystem.ReadAllText(csvFilePath))
     End Sub
 End Class

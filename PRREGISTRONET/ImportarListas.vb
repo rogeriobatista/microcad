@@ -1,9 +1,10 @@
-﻿Imports System.Net
+﻿Imports System.Globalization
+Imports System.Net
 Imports System.Text
 Imports Newtonsoft.Json
 
 Public Class ImportarListas
-    Public Shared Function ImportarTXT(filePath As String) As List(Of Email)
+    Public Shared Function ImportarTXT(filePath As String, origin As String) As List(Of Email)
 
         Dim importedEmails = New List(Of Email)
 
@@ -16,7 +17,7 @@ Public Class ImportarListas
                 Dim line = objReader.ReadLine()
 
                 If line.Contains("@") Then
-                    importedEmails.Add(CreateEmailFromTXT(line))
+                    importedEmails.Add(CreateEmailFromTXT(line, origin))
                 End If
             Loop
         Else
@@ -26,7 +27,7 @@ Public Class ImportarListas
         Return importedEmails
     End Function
 
-    Public Shared Function ImportarCSV(filePath As String) As List(Of Email)
+    Public Shared Function ImportarCSV(filePath As String, origin As String) As List(Of Email)
         Dim importedEmails = New List(Of Email)
 
         If IO.File.Exists(filePath) = True Then
@@ -38,7 +39,7 @@ Public Class ImportarListas
                 Dim line = objReader.ReadLine()
 
                 If line.Contains("@") Then
-                    importedEmails.Add(CreateEmailFromCSV(line))
+                    importedEmails.Add(CreateEmailFromCSV(line, origin))
                 End If
             Loop
         Else
@@ -61,7 +62,7 @@ Public Class ImportarListas
 
         Dim list = JsonConvert.DeserializeObject(Of List(Of Email))(response)
 
-        Return list.Where(Function(x) Not x.nserie.Equals("XXXXXXX") And Not x.nserie.Equals("X") And Not String.IsNullOrEmpty(x.email) And (x.nserie.StartsWith("T") Or x.nserie.StartsWith("M"))).Select(Function(x) CreateEmailFromRegistronet(x)).ToList()
+        Return list.Where(Function(x) Not x.nserie.Equals("XXXXXXX") And Not x.email.Equals("X") And Not String.IsNullOrEmpty(x.email) And (x.nserie.StartsWith("T") Or x.nserie.StartsWith("M"))).Select(Function(x) CreateEmailFromRegistronet(x)).ToList()
     End Function
 
     Public Shared Function Salvar(emails As List(Of Email)) As List(Of Email)
@@ -84,8 +85,8 @@ Public Class ImportarListas
         Return New Email With
         {
             .email = email.email,
-            .nserie = "TXXBBB",
-            .data = FormatDate(email.data),
+            .nserie = email.nserie,
+            .data = FormatDate(Now.Date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)),
             .origem = "Registronet"
         }
     End Function
@@ -101,21 +102,21 @@ Public Class ImportarListas
         Return splitedDate.Last().Substring(2) + splitedDate(1) + splitedDate(0)
     End Function
 
-    Private Shared Function CreateEmailFromTXT(line As String) As Email
+    Private Shared Function CreateEmailFromTXT(line As String, origin As String) As Email
         Return New Email With {
             .email = line.Split(":").FirstOrDefault(Function(x) x.Contains("@")),
             .nserie = "TXXBBB",
             .data = DateTime.Now.ToString("yyMMdd"),
-            .origem = "ListaTXT"
+            .origem = origin
         }
     End Function
 
-    Private Shared Function CreateEmailFromCSV(line As String) As Email
+    Private Shared Function CreateEmailFromCSV(line As String, origin As String) As Email
         Return New Email With {
             .email = line.Split(",").FirstOrDefault(Function(x) x.Contains("@")).Replace("""", ""),
             .nserie = "TXXBBB",
             .data = DateTime.Now.ToString("yyMMdd"),
-            .origem = "ListaCSV"
+            .origem = origin
         }
     End Function
 End Class
