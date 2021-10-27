@@ -59,7 +59,7 @@
 
         If importedEmails.Count() > 0 Then
 
-            Dim successMessage = emailsToImport.Count().ToString() & " lidos / " & importedEmails.Count().ToString() & " emails importados"
+            Dim successMessage = emailsToImport.Count().ToString() & " lidos / " & importedEmails.Count().ToString() & " emails importados/atualizados"
 
             RTBDetalhes.Text += successMessage & vbNewLine
 
@@ -83,9 +83,9 @@
         Dim ordem = 1
         For Each item As Email In lista
             item.ordem = ordem
+            item.email = item.email.ToLowerInvariant()
             ordem += 1
         Next
-
 
         Return lista
     End Function

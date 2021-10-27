@@ -77,7 +77,7 @@ class LicenseController {
       function uniqBy(list) {
          let seen = new Set();
          return list.filter(item => {
-             let k = item.email;
+             let k = item.email.toLowerCase();
              return seen.has(k) ? false : seen.add(k);
          });
       }
@@ -122,12 +122,14 @@ class LicenseController {
 
             const { id, nserie, email, data } = item;
             
-            const emailsExists = await TBLXemail.findOne({where: { email: email }})
+            const emailExists = await TBLXemail.findOne({where: { email: email }})
 
-            if (emailsExists && emailsExists.nserie !== 'XXXXXXX') {
+            if (emailExists && emailExists.nserie !== 'XXXXXXX') {
                await TBLXemail.update({ nserie, email, data }, { where: { email: email } });
             }
-            else {
+            
+            if (!emailExists)
+            {
                await TBLXemail.create({ nserie: nserie, email: email, data: data });
             }
          })

@@ -56,12 +56,14 @@ Partial Class FormLimparListas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(479, 47)
         Me.ControlBox = False
         Me.Controls.Add(Me.PBLimparListas)
         Me.Controls.Add(Me.BtnLimpar)
         Me.Controls.Add(Me.BtnSair)
         Me.Name = "FormLimparListas"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Limpar Listas"
         Me.ResumeLayout(False)
 
