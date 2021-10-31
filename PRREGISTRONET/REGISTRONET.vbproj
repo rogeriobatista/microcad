@@ -161,6 +161,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Registro.vb" />
+    <Compile Include="Tabelas\TBLAtualiza\FormTabelaAtualiza.Designer.vb">
+      <DependentUpon>FormTabelaAtualiza.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabelas\TBLAtualiza\FormTabelaAtualiza.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabelas\TBLAtualiza\TBLAtualiza.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConsultaNome.resx">
@@ -195,6 +202,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabelas\TBLAtualiza\FormTabelaAtualiza.resx">
+      <DependentUpon>FormTabelaAtualiza.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

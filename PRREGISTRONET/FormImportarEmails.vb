@@ -47,7 +47,7 @@
         MessageBox.Show(startMessage)
 
         Dim index = 0
-        Dim lote = 500
+        Dim lote = 100
         Dim importedEmails = New List(Of Email)
         While (index <= emailsToImport.Count)
             Dim emails = emailsToImport.Where(Function(x) x.ordem > index).Take(lote).ToList()

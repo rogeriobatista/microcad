@@ -17,6 +17,31 @@ import TBLRegistronet  from '../models/TBLRegistronet';
 import TBLXemail       from '../models/TBLXemail';
 
 class LicenseController {
+   async atualiza(req, res) {
+      return res.json(await TBLAtualiza.findAll({
+         order: [
+            [ col('nvxx'), 'DESC'],
+            [ col('nvxxyy'), 'DESC']
+         ]
+      }))
+   }
+
+   async atualizaUpdate(req, res) {
+      const { registros } = req.body
+
+      if (registros) {
+
+         registros.forEach(async item => {
+            const { nvxx, nvxxyy, ndata, vxx } = item
+            await TBLAtualiza.update({ nvxx, nvxxyy, ndata, vxx }, { where: { nvxx: nvxx } });
+         })
+
+         return res.json(registros)
+      }
+
+      return res.json([])
+   }
+
    async dadosdth(req, res) {
       return res.json(await TBLDadosdth.findAll());
    }

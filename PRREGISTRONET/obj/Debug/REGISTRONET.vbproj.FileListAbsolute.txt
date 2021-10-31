@@ -71,3 +71,4 @@ D:\Projects\Felix\microcad\PRREGISTRONET\Microsoft.Vbe.Interop.dll
 D:\Projects\Felix\microcad\PRREGISTRONET\stdole.dll
 D:\Projects\Felix\microcad\PRREGISTRONET\office.xml
 D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormLimparListas.resources
+D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaAtualiza.resources
