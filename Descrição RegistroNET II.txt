@@ -18,6 +18,6 @@
 
 -TBLRegistro:  apenas mostrar a tabela - OK
 
--TBLRegistronet:  apenas mostrar a tabela
+-TBLRegistronet:  apenas mostrar a tabela - OK
 
 -TBLXemail: apenas mostrar a tabela

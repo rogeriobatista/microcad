@@ -26,4 +26,8 @@
     Private Sub BtnRegistro_Click(sender As Object, e As EventArgs) Handles BtnRegistro.Click
         FormTabelaRegistro.Show()
     End Sub
+
+    Private Sub BtnRegistronet_Click(sender As Object, e As EventArgs) Handles BtnRegistronet.Click
+        FormTabelaRegistronet.Show()
+    End Sub
 End Class

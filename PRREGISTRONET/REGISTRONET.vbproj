@@ -196,6 +196,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tabelas\TBLNaoreg\TBLNaoreg.vb" />
+    <Compile Include="Tabelas\TBLRegistronet\FormTabelaRegistronet.Designer.vb">
+      <DependentUpon>FormTabelaRegistronet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabelas\TBLRegistronet\FormTabelaRegistronet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabelas\TBLRegistronet\TBLRegistronet.vb" />
     <Compile Include="Tabelas\TBLRegistro\FormTabelaRegistro.Designer.vb">
       <DependentUpon>FormTabelaRegistro.vb</DependentUpon>
     </Compile>
@@ -252,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tabelas\TBLNaoreg\FormTabelaNaoreg.resx">
       <DependentUpon>FormTabelaNaoreg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabelas\TBLRegistronet\FormTabelaRegistronet.resx">
+      <DependentUpon>FormTabelaRegistronet.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tabelas\TBLRegistro\FormTabelaRegistro.resx">
       <DependentUpon>FormTabelaRegistro.vb</DependentUpon>
