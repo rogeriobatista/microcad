@@ -182,6 +182,27 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tabelas\TBLDadosins000\TBLDadosins000.vb" />
+    <Compile Include="Tabelas\TBLDadostxt\FormTabelaDadostxt.Designer.vb">
+      <DependentUpon>FormTabelaDadostxt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabelas\TBLDadostxt\FormTabelaDadostxt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabelas\TBLDadostxt\TBLDadostxt.vb" />
+    <Compile Include="Tabelas\TBLNaoreg\FormTabelaNaoreg.Designer.vb">
+      <DependentUpon>FormTabelaNaoreg.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabelas\TBLNaoreg\FormTabelaNaoreg.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabelas\TBLNaoreg\TBLNaoreg.vb" />
+    <Compile Include="Tabelas\TBLRegistro\FormTabelaRegistro.Designer.vb">
+      <DependentUpon>FormTabelaRegistro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabelas\TBLRegistro\FormTabelaRegistro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabelas\TBLRegistro\TBLRegistro.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConsultaNome.resx">
@@ -225,6 +246,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tabelas\TBLDadosins000\FormTabelaDadosins000.resx">
       <DependentUpon>FormTabelaDadosins000.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabelas\TBLDadostxt\FormTabelaDadostxt.resx">
+      <DependentUpon>FormTabelaDadostxt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabelas\TBLNaoreg\FormTabelaNaoreg.resx">
+      <DependentUpon>FormTabelaNaoreg.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabelas\TBLRegistro\FormTabelaRegistro.resx">
+      <DependentUpon>FormTabelaRegistro.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -281,5 +311,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

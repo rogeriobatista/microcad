@@ -12,11 +12,11 @@
 
 -TBLDadosins000: nenhum botão. Ordenada por “tod” descendente - OK
 
--TBLDadostxt: iniciar ordenado por “ntot” descendente
+-TBLDadostxt: iniciar ordenado por “ntot” descendente - OK
 
--TBLNaoreg: apenas mostrar a tabela
+-TBLNaoreg: apenas mostrar a tabela - OK
 
--TBLRegistro:  apenas mostrar a tabela
+-TBLRegistro:  apenas mostrar a tabela - OK
 
 -TBLRegistronet:  apenas mostrar a tabela
 

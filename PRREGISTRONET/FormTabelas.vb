@@ -14,4 +14,16 @@
     Private Sub BtnDadosins000_Click(sender As Object, e As EventArgs) Handles BtnDadosins000.Click
         FormTabelaDadosins000.Show()
     End Sub
+
+    Private Sub BtnDadostxt_Click(sender As Object, e As EventArgs) Handles BtnDadostxt.Click
+        FormTabelaDadostxt.Show()
+    End Sub
+
+    Private Sub BtnNaoreg_Click(sender As Object, e As EventArgs) Handles BtnNaoreg.Click
+        FormTabelaNaoreg.Show()
+    End Sub
+
+    Private Sub BtnRegistro_Click(sender As Object, e As EventArgs) Handles BtnRegistro.Click
+        FormTabelaRegistro.Show()
+    End Sub
 End Class
