@@ -72,3 +72,5 @@ D:\Projects\Felix\microcad\PRREGISTRONET\stdole.dll
 D:\Projects\Felix\microcad\PRREGISTRONET\office.xml
 D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormLimparListas.resources
 D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaAtualiza.resources
+D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaDadosdth.resources
+D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaDadosins000.resources

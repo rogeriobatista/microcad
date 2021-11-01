@@ -10,7 +10,7 @@ Public Class FormTabelaAtualiza
 
     Private Sub FormTabelaAtualiza_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ObterRegistros()
-        AtualizaTabela()
+        AtualizarTabela()
     End Sub
 
     Private Sub BtnSalvar_Click(sender As Object, e As EventArgs) Handles BtnSalvar.Click
@@ -41,7 +41,7 @@ Public Class FormTabelaAtualiza
 
         Update(registros)
         ObterRegistros()
-        AtualizaTabela()
+        AtualizarTabela()
     End Sub
 
     Public Sub Update(registros As List(Of TBLAtualiza))
@@ -71,10 +71,10 @@ Public Class FormTabelaAtualiza
                 _registros = _registros.OrderByDescending(Function(x) x.vxx).ToList()
         End Select
 
-        AtualizaTabela()
+        AtualizarTabela()
     End Sub
 
-    Private Sub AtualizaTabela()
+    Private Sub AtualizarTabela()
         DgvTBLAtualiza.DataSource = _registros
     End Sub
 End Class
