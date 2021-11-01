@@ -1,41 +1,23 @@
-﻿Imports System.ComponentModel
-Imports System.Net
+﻿Imports System.Net
 Imports System.Text
 Imports Newtonsoft.Json
 
 Public Class FormTabelaAtualiza
+    Private Property _registros As List(Of TBLAtualiza)
     Private Sub BtnSair_Click(sender As Object, e As EventArgs) Handles BtnSair.Click
         ActiveForm.Close()
     End Sub
 
     Private Sub FormTabelaAtualiza_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim registros = ObterRegistros()
-
-        Dim items = New BindingList(Of TBLAtualiza)
-
-        For Each item As TBLAtualiza In registros
-            items.Add(item)
-        Next
-
-        Dim dataSource = New BindingSource() With {
-            .DataSource = items
-        }
-
-        DgvTBLAtualiza.DataSource = dataSource
-
-        For Each column As DataGridViewColumn In DgvTBLAtualiza.Columns
-            column.SortMode = DataGridViewColumnSortMode.Programmatic
-        Next
-
+        ObterRegistros()
+        AtualizaTabela()
     End Sub
 
     Private Sub BtnSalvar_Click(sender As Object, e As EventArgs) Handles BtnSalvar.Click
-        DgvTBLAtualiza.EditMode = False
         Salvar()
-        DgvTBLAtualiza.EditMode = True
     End Sub
 
-    Private Shared Function ObterRegistros() As List(Of TBLAtualiza)
+    Private Sub ObterRegistros()
         Dim url As String = "http://localhost:3333/api/atualiza"
         Dim response As String
 
@@ -46,17 +28,20 @@ Public Class FormTabelaAtualiza
             response = Encoding.Default.GetString(webClient.DownloadData(url))
         End Using
 
-        Return JsonConvert.DeserializeObject(Of List(Of TBLAtualiza))(response)
-    End Function
+        _registros = JsonConvert.DeserializeObject(Of List(Of TBLAtualiza))(response)
+    End Sub
 
     Private Sub Salvar()
+
         Dim registros = New List(Of TBLAtualiza)
 
         For Each row As DataGridViewRow In DgvTBLAtualiza.Rows
             registros.Add(row.DataBoundItem)
         Next
 
-
+        Update(registros)
+        ObterRegistros()
+        AtualizaTabela()
     End Sub
 
     Public Sub Update(registros As List(Of TBLAtualiza))
@@ -73,6 +58,23 @@ Public Class FormTabelaAtualiza
     End Sub
 
     Private Sub DgvTBLAtualiza_ColumnHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvTBLAtualiza.ColumnHeaderMouseClick
-        DgvTBLAtualiza.Sort(DgvTBLAtualiza.Columns(e.ColumnIndex), ComponentModel.ListSortDirection.Ascending)
+        Dim column = DgvTBLAtualiza.Columns.Item(e.ColumnIndex).Name
+
+        Select Case column
+            Case "nvxx"
+                _registros = _registros.OrderByDescending(Function(x) x.nvxx).ToList()
+            Case "nvxxyy"
+                _registros = _registros.OrderByDescending(Function(x) x.nvxxyy).ToList()
+            Case "ndata"
+                _registros = _registros.OrderByDescending(Function(x) x.ndata).ToList()
+            Case "vxx"
+                _registros = _registros.OrderByDescending(Function(x) x.vxx).ToList()
+        End Select
+
+        AtualizaTabela()
+    End Sub
+
+    Private Sub AtualizaTabela()
+        DgvTBLAtualiza.DataSource = _registros
     End Sub
 End Class
