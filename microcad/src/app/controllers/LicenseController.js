@@ -17,6 +17,11 @@ import TBLRegistronet  from '../models/TBLRegistronet';
 import TBLXemail       from '../models/TBLXemail';
 
 class LicenseController {
+
+   async dadosdatmail(req, res) {
+      return res.json(await TBLDadosdatmail.findAll())
+   }
+
    async atualiza(req, res) {
       return res.json(await TBLAtualiza.findAll({
          order: [

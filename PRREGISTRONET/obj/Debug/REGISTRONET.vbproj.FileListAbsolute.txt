@@ -79,3 +79,4 @@ D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaNaoreg.
 D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaRegistro.resources
 D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaRegistronet.resources
 D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaXemail.resources
+D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaDadosdatmail.resources

@@ -34,4 +34,8 @@
     Private Sub BtnXemail_Click(sender As Object, e As EventArgs) Handles BtnXemail.Click
         FormTabelaXemail.Show()
     End Sub
+
+    Private Sub BtnDadosdatmail_Click(sender As Object, e As EventArgs) Handles BtnDadosdatmail.Click
+        FormTabelaDadosdatmail.Show()
+    End Sub
 End Class

@@ -19,7 +19,7 @@ Public Class ListarListas
 
     Public Shared Sub Salvar(lista As List(Of Email), nomeDoArquivo As String)
 
-        Const PATH As String = "C:\REGISTRONET-LISTAS-TESTE\"
+        Const PATH As String = "C:\REGISTRONET-LISTAS\"
 
         If Not My.Computer.FileSystem.DirectoryExists(PATH) Then
             My.Computer.FileSystem.CreateDirectory(PATH)
