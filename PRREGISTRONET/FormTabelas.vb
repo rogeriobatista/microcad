@@ -30,4 +30,8 @@
     Private Sub BtnRegistronet_Click(sender As Object, e As EventArgs) Handles BtnRegistronet.Click
         FormTabelaRegistronet.Show()
     End Sub
+
+    Private Sub BtnXemail_Click(sender As Object, e As EventArgs) Handles BtnXemail.Click
+        FormTabelaXemail.Show()
+    End Sub
 End Class

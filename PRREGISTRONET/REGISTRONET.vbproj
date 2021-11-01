@@ -210,6 +210,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tabelas\TBLRegistro\TBLRegistro.vb" />
+    <Compile Include="Tabelas\TBLXemail\FormTabelaXemail.Designer.vb">
+      <DependentUpon>FormTabelaXemail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabelas\TBLXemail\FormTabelaXemail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabelas\TBLXemail\TBLXemail.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ConsultaNome.resx">
@@ -265,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tabelas\TBLRegistro\FormTabelaRegistro.resx">
       <DependentUpon>FormTabelaRegistro.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabelas\TBLXemail\FormTabelaXemail.resx">
+      <DependentUpon>FormTabelaXemail.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
