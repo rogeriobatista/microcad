@@ -18,6 +18,15 @@ import TBLXemail       from '../models/TBLXemail';
 
 class LicenseController {
 
+   async dadosdat(req, res) {
+      return res.json(await TBLDadosdat.findAll({
+         order: [
+            [ col('ndata'), 'DESC'],
+            [ col('nvxx'), 'DESC']
+         ]
+      }))
+   }
+
    async dadosdatmail(req, res) {
       return res.json(await TBLDadosdatmail.findAll())
    }

@@ -30,6 +30,7 @@ routes.get('/', (req, res) => res.send('API MICROCAD V2.6 is running OK.'));
 //
 routes.get('/api/atualiza',                            LicenseController.atualiza);
 routes.post('/api/atualiza/update',                    LicenseController.atualizaUpdate);
+routes.get('/api/dadosdat',                            LicenseController.dadosdat);
 routes.get('/api/dadosdatmail',                        LicenseController.dadosdatmail);
 routes.get('/api/dadosdth',                            LicenseController.dadosdth);
 routes.get('/api/dadosins000',                         LicenseController.dadosins000);

@@ -38,4 +38,8 @@
     Private Sub BtnDadosdatmail_Click(sender As Object, e As EventArgs) Handles BtnDadosdatmail.Click
         FormTabelaDadosdatmail.Show()
     End Sub
+
+    Private Sub BtnDadosdat_Click(sender As Object, e As EventArgs) Handles BtnDadosdat.Click
+        FormTabelaDadosdat.Show()
+    End Sub
 End Class

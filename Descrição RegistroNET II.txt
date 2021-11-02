@@ -1,8 +1,8 @@
 -Para todas as tabela ordenar ao clicar no titulo da coluna e não apresentar a coluna ID quando existir. - OK
 
--TBLDadosdat: botão para mostrar o total de instalações para cada mês. Ordenada por “ndata,nvxx”
+-TBLDadosdat: botão para mostrar o total de instalações para cada mês. Ordenada por “ndata,nvxx” - OK
 
--TBLDadosins: botão para lista na tela os “nserie0” com mais de 3 ocorrencias. Ordenada por “nserie0” descendente
+-TBLDadosins: botão para lista na tela os “nserie0” com mais de 3 ocorrencias. Ordenada por “nserie0” descendente (lista termina com A > 3) (lista termina com B > 1)
 
 -TBLDadosdatmail: botão de exportar a coluna de email para um arquivo TXT - OK
 

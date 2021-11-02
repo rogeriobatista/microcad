@@ -175,6 +175,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tabelas\TBLDadosdatmail\TBLDadosdatmail.vb" />
+    <Compile Include="Tabelas\TBLDadosdat\FormTabelaDadosdat.Designer.vb">
+      <DependentUpon>FormTabelaDadosdat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabelas\TBLDadosdat\FormTabelaDadosdat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabelas\TBLDadosdat\TBLDadosdat.vb" />
     <Compile Include="Tabelas\TBLDadosdth\FormTabelaDadosdth.Designer.vb">
       <DependentUpon>FormTabelaDadosdth.vb</DependentUpon>
     </Compile>
@@ -264,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tabelas\TBLDadosdatmail\FormTabelaDadosdatmail.resx">
       <DependentUpon>FormTabelaDadosdatmail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabelas\TBLDadosdat\FormTabelaDadosdat.resx">
+      <DependentUpon>FormTabelaDadosdat.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tabelas\TBLDadosdth\FormTabelaDadosdth.resx">
       <DependentUpon>FormTabelaDadosdth.vb</DependentUpon>
