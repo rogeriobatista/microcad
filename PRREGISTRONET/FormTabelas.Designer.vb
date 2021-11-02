@@ -148,6 +148,7 @@ Partial Class FormTabelas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(682, 98)
         Me.Controls.Add(Me.BtnXemail)
         Me.Controls.Add(Me.BtnRegistronet)
@@ -162,6 +163,7 @@ Partial Class FormTabelas
         Me.Controls.Add(Me.BtnAtualiza)
         Me.Controls.Add(Me.BtnSair)
         Me.Name = "FormTabelas"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormTabelas"
         Me.ResumeLayout(False)
 

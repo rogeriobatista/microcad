@@ -14,7 +14,7 @@ Public Class FormTabelaDadosins000
     End Sub
 
     Private Sub ObterRegistros()
-        Dim url As String = "http://localhost:3333/api/dadosins000"
+        Dim url As String = "https://microcad.azurewebsites.net/api/dadosins000"
         Dim response As String
 
         Using webClient As New WebClient

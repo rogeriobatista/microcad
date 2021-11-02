@@ -23,9 +23,9 @@ Public Class FormREGISTRONET
         Dim DATAEHORA As DateTime = DateTime.Now
         STRDATA = DATAEHORA.ToString("dd/MM/yy")
         '
-        'If Not Licenca.Validar(XNSE, UNAME, CNAME) Then
-        '    FormLicencaInvalida.ShowDialog()
-        'End If
+        If Not Licenca.Validar(XNSE, UNAME, CNAME) Then
+            FormLicencaInvalida.ShowDialog()
+        End If
         '...
         If CNAME = "5-FELIX" Or CNAME = "FELIX-PC1" Or CNAME = "FELIX-PC2" Then
             CHKD1.Checked = True

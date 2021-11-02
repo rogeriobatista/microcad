@@ -196,6 +196,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tabelas\TBLDadosins000\TBLDadosins000.vb" />
+    <Compile Include="Tabelas\TBLDadosins\FormTabelaDadosins.Designer.vb">
+      <DependentUpon>FormTabelaDadosins.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabelas\TBLDadosins\FormTabelaDadosins.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tabelas\TBLDadosins\TBLDadosins.vb" />
     <Compile Include="Tabelas\TBLDadostxt\FormTabelaDadostxt.Designer.vb">
       <DependentUpon>FormTabelaDadostxt.vb</DependentUpon>
     </Compile>
@@ -280,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tabelas\TBLDadosins000\FormTabelaDadosins000.resx">
       <DependentUpon>FormTabelaDadosins000.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabelas\TBLDadosins\FormTabelaDadosins.resx">
+      <DependentUpon>FormTabelaDadosins.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tabelas\TBLDadostxt\FormTabelaDadostxt.resx">
       <DependentUpon>FormTabelaDadostxt.vb</DependentUpon>

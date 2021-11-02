@@ -15,7 +15,7 @@ Public Class FormTabelaXemail
     End Sub
 
     Private Sub ObterRegistros()
-        Dim url As String = "http://localhost:3333/api/xemail"
+        Dim url As String = "https://microcad.azurewebsites.net/api/xemail"
         Dim response As String
 
         Using webClient As New WebClient

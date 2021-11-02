@@ -27,6 +27,14 @@ class LicenseController {
       }))
    }
 
+   async dadosins(req, res) {
+      return res.json(await TBLDadosins.findAll({
+         order: [
+            [ col('nserie0'), 'DESC']
+         ]
+      }))
+   }
+
    async dadosdatmail(req, res) {
       return res.json(await TBLDadosdatmail.findAll())
    }

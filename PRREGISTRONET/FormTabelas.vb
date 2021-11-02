@@ -42,4 +42,8 @@
     Private Sub BtnDadosdat_Click(sender As Object, e As EventArgs) Handles BtnDadosdat.Click
         FormTabelaDadosdat.Show()
     End Sub
+
+    Private Sub BtnDadosins_Click(sender As Object, e As EventArgs) Handles BtnDadosins.Click
+        FormTabelaDadosins.Show()
+    End Sub
 End Class

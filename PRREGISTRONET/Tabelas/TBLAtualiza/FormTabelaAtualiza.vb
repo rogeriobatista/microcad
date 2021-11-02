@@ -18,7 +18,7 @@ Public Class FormTabelaAtualiza
     End Sub
 
     Private Sub ObterRegistros()
-        Dim url As String = "http://localhost:3333/api/atualiza"
+        Dim url As String = "https://microcad.azurewebsites.net/api/atualiza"
         Dim response As String
 
         Using webClient As New WebClient
@@ -45,7 +45,7 @@ Public Class FormTabelaAtualiza
     End Sub
 
     Public Sub Update(registros As List(Of TBLAtualiza))
-        Dim url As String = "http://localhost:3333/api/atualiza/update"
+        Dim url As String = "https://microcad.azurewebsites.net/api/atualiza/update"
         Dim response As String
 
         Using webClient As New WebClient
