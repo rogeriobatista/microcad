@@ -28,15 +28,36 @@ Public Class FormTabelaDadosins
     End Sub
 
     Private Sub AtualizarTabela()
-        Dim lista = (From p In _registros
-                     Group p By p.nserie0 Into Group
-                     Select New With {.nserie0 = nserie0, .total = Group.Count()}).ToList
-
-        LblTotal.Text = "Total de registros: " & lista.Count()
-        DgvDadosins.DataSource = lista
+        LblTotal.Text = "Total de registros: " & _registros.Count()
+        DgvDadosins.DataSource = _registros
     End Sub
 
     Private Sub BtnDadosSegregados_Click(sender As Object, e As EventArgs) Handles BtnDadosSegregados.Click
         FormTabelaDadosinsSegregado.Show()
+    End Sub
+
+    Private Sub DgvDadosins_ColumnHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvDadosins.ColumnHeaderMouseClick
+        Dim column = DgvDadosins.Columns.Item(e.ColumnIndex).Name
+
+        Select Case column
+            Case "nserie0"
+                _registros = _registros.OrderByDescending(Function(x) x.nserie0).ToList()
+            Case "uname"
+                _registros = _registros.OrderByDescending(Function(x) x.uname).ToList()
+            Case "cname"
+                _registros = _registros.OrderByDescending(Function(x) x.cname).ToList()
+            Case "ndata"
+                _registros = _registros.OrderByDescending(Function(x) x.ndata).ToList()
+            Case "nhora"
+                _registros = _registros.OrderByDescending(Function(x) x.nhora).ToList()
+            Case "udata"
+                _registros = _registros.OrderByDescending(Function(x) x.udata).ToList()
+            Case "uhora"
+                _registros = _registros.OrderByDescending(Function(x) x.uhora).ToList()
+            Case "chave"
+                _registros = _registros.OrderByDescending(Function(x) x.chave).ToList()
+        End Select
+
+        AtualizarTabela()
     End Sub
 End Class

@@ -11,7 +11,7 @@ Public Class FormTabelaDadosinsSegregado
 
     Private Sub FormTabelaDadosinsSegregado_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ObterRegistros()
-        AtualizarTabela()
+        AtualizarTabelas()
     End Sub
 
     Private Sub ObterRegistros()
@@ -28,15 +28,62 @@ Public Class FormTabelaDadosinsSegregado
         _registros = JsonConvert.DeserializeObject(Of List(Of TBLDadosins))(response)
     End Sub
 
-    Private Sub AtualizarTabela()
+    Private Sub AtualizarTabelaA()
         Dim lista = (From p In _registros
                      Group p By p.nserie0 Into Group
                      Select New With {.nserie0 = nserie0, .total = Group.Count()}).ToList
 
         DgvDadosinsA.DataSource = lista.Where(Function(x) x.nserie0.EndsWith("A") And x.total > 3).ToList()
-        DgvDadosinsB.DataSource = lista.Where(Function(x) x.nserie0.EndsWith("B") And x.total > 1).ToList()
 
         LblTotalA.Text = "Total de registros: " & DgvDadosinsA.Rows.Count()
+    End Sub
+
+    Private Sub AtualizarTabelaB()
+        Dim lista = (From p In _registros
+                     Group p By p.nserie0 Into Group
+                     Select New With {.nserie0 = nserie0, .total = Group.Count()}).ToList
+
+        DgvDadosinsB.DataSource = lista.Where(Function(x) x.nserie0.EndsWith("B") And x.total > 1).ToList()
+
         LblTotalB.Text = "Total de registros: " & DgvDadosinsB.Rows.Count()
+    End Sub
+
+    Private Sub AtualizarTabelas()
+        AtualizarTabelaA()
+        AtualizarTabelaB()
+    End Sub
+
+    Private Sub DgvDadosinsA_ColumnHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvDadosinsA.ColumnHeaderMouseClick
+        Dim column = DgvDadosinsA.Columns.Item(e.ColumnIndex).Name
+
+        Dim lista = (From p In _registros
+                     Group p By p.nserie0 Into Group
+                     Select New With {.nserie0 = nserie0, .total = Group.Count()}).ToList
+
+        lista = lista.Where(Function(x) x.nserie0.EndsWith("A") And x.total > 3).ToList()
+
+        Select Case column
+            Case "nserie0"
+                DgvDadosinsA.DataSource = lista.OrderByDescending(Function(x) x.nserie0).ToList()
+            Case "total"
+                DgvDadosinsA.DataSource = lista.OrderByDescending(Function(x) x.total).ToList()
+        End Select
+    End Sub
+
+    Private Sub DgvDadosinsB_ColumnHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvDadosinsB.ColumnHeaderMouseClick
+        Dim column = DgvDadosinsB.Columns.Item(e.ColumnIndex).Name
+
+        Dim lista = (From p In _registros
+                     Group p By p.nserie0 Into Group
+                     Select New With {.nserie0 = nserie0, .total = Group.Count()}).ToList
+
+        lista = lista.Where(Function(x) x.nserie0.EndsWith("B") And x.total > 1).ToList()
+
+        Select Case column
+            Case "nserie0"
+                DgvDadosinsB.DataSource = lista.OrderByDescending(Function(x) x.nserie0).ToList()
+            Case "total"
+                DgvDadosinsB.DataSource = lista.OrderByDescending(Function(x) x.total).ToList()
+        End Select
     End Sub
 End Class
