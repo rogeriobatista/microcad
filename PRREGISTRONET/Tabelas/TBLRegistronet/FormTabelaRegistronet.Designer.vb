@@ -24,12 +24,13 @@ Partial Class FormTabelaRegistronet
     Private Sub InitializeComponent()
         Me.BtnSair = New System.Windows.Forms.Button()
         Me.DgvRegistronet = New System.Windows.Forms.DataGridView()
+        Me.LblTotal = New System.Windows.Forms.Label()
         CType(Me.DgvRegistronet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnSair
         '
-        Me.BtnSair.Location = New System.Drawing.Point(1007, 471)
+        Me.BtnSair.Location = New System.Drawing.Point(1007, 536)
         Me.BtnSair.Name = "BtnSair"
         Me.BtnSair.Size = New System.Drawing.Size(75, 23)
         Me.BtnSair.TabIndex = 0
@@ -44,13 +45,23 @@ Partial Class FormTabelaRegistronet
         Me.DgvRegistronet.Size = New System.Drawing.Size(1070, 453)
         Me.DgvRegistronet.TabIndex = 1
         '
+        'LblTotal
+        '
+        Me.LblTotal.AutoSize = True
+        Me.LblTotal.Location = New System.Drawing.Point(968, 489)
+        Me.LblTotal.Name = "LblTotal"
+        Me.LblTotal.Size = New System.Drawing.Size(91, 13)
+        Me.LblTotal.TabIndex = 2
+        Me.LblTotal.Text = "Total de registros:"
+        '
         'FormTabelaRegistronet
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(1094, 500)
+        Me.ClientSize = New System.Drawing.Size(1094, 571)
         Me.ControlBox = False
+        Me.Controls.Add(Me.LblTotal)
         Me.Controls.Add(Me.DgvRegistronet)
         Me.Controls.Add(Me.BtnSair)
         Me.Name = "FormTabelaRegistronet"
@@ -58,9 +69,11 @@ Partial Class FormTabelaRegistronet
         Me.Text = "Tabela Registronet"
         CType(Me.DgvRegistronet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BtnSair As Button
     Friend WithEvents DgvRegistronet As DataGridView
+    Friend WithEvents LblTotal As Label
 End Class

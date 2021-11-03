@@ -29,6 +29,7 @@ Public Class FormTabelaNaoreg
     End Sub
 
     Private Sub AtualizarTabela()
+        LblTotal.Text = "Total de registros: " & _registros.Count()
         DgvNaoreg.DataSource = _registros
     End Sub
 

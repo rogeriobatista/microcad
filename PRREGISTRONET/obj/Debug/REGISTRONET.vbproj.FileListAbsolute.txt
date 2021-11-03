@@ -82,3 +82,4 @@ D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaXemail.
 D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaDadosdatmail.resources
 D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaDadosdat.resources
 D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaDadosins.resources
+D:\Projects\Felix\microcad\PRREGISTRONET\obj\Debug\REGISTRONET.FormTabelaDadosinsSegregado.resources

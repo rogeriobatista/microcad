@@ -29,12 +29,13 @@ Partial Class FormTabelaAtualiza
         Me.nvxxyy = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ndata = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.vxx = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LblTotal = New System.Windows.Forms.Label()
         CType(Me.DgvTBLAtualiza, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnSair
         '
-        Me.BtnSair.Location = New System.Drawing.Point(713, 415)
+        Me.BtnSair.Location = New System.Drawing.Point(713, 461)
         Me.BtnSair.Name = "BtnSair"
         Me.BtnSair.Size = New System.Drawing.Size(75, 23)
         Me.BtnSair.TabIndex = 0
@@ -43,7 +44,7 @@ Partial Class FormTabelaAtualiza
         '
         'BtnSalvar
         '
-        Me.BtnSalvar.Location = New System.Drawing.Point(632, 415)
+        Me.BtnSalvar.Location = New System.Drawing.Point(632, 461)
         Me.BtnSalvar.Name = "BtnSalvar"
         Me.BtnSalvar.Size = New System.Drawing.Size(75, 23)
         Me.BtnSalvar.TabIndex = 1
@@ -85,13 +86,23 @@ Partial Class FormTabelaAtualiza
         Me.vxx.HeaderText = "vxx"
         Me.vxx.Name = "vxx"
         '
+        'LblTotal
+        '
+        Me.LblTotal.AutoSize = True
+        Me.LblTotal.Location = New System.Drawing.Point(671, 421)
+        Me.LblTotal.Name = "LblTotal"
+        Me.LblTotal.Size = New System.Drawing.Size(91, 13)
+        Me.LblTotal.TabIndex = 3
+        Me.LblTotal.Text = "Total de registros:"
+        '
         'FormTabelaAtualiza
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(800, 496)
         Me.ControlBox = False
+        Me.Controls.Add(Me.LblTotal)
         Me.Controls.Add(Me.DgvTBLAtualiza)
         Me.Controls.Add(Me.BtnSalvar)
         Me.Controls.Add(Me.BtnSair)
@@ -100,6 +111,7 @@ Partial Class FormTabelaAtualiza
         Me.Text = "Tabela TBLAtualiza"
         CType(Me.DgvTBLAtualiza, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -110,4 +122,5 @@ Partial Class FormTabelaAtualiza
     Friend WithEvents nvxxyy As DataGridViewTextBoxColumn
     Friend WithEvents ndata As DataGridViewTextBoxColumn
     Friend WithEvents vxx As DataGridViewTextBoxColumn
+    Friend WithEvents LblTotal As Label
 End Class

@@ -75,6 +75,7 @@ Public Class FormTabelaAtualiza
     End Sub
 
     Private Sub AtualizarTabela()
+        LblTotal.Text = "Total de registros: " & _registros.Count()
         DgvTBLAtualiza.DataSource = _registros
     End Sub
 End Class

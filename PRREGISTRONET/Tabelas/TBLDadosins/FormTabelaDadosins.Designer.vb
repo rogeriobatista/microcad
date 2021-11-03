@@ -23,57 +23,69 @@ Partial Class FormTabelaDadosins
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.BtnSair = New System.Windows.Forms.Button()
-        Me.DgvDadosinsA = New System.Windows.Forms.DataGridView()
-        Me.DgvDadosinsB = New System.Windows.Forms.DataGridView()
-        CType(Me.DgvDadosinsA, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DgvDadosinsB, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DgvDadosins = New System.Windows.Forms.DataGridView()
+        Me.LblTotal = New System.Windows.Forms.Label()
+        Me.BtnDadosSegregados = New System.Windows.Forms.Button()
+        CType(Me.DgvDadosins, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnSair
         '
-        Me.BtnSair.Location = New System.Drawing.Point(713, 415)
+        Me.BtnSair.Location = New System.Drawing.Point(517, 468)
         Me.BtnSair.Name = "BtnSair"
         Me.BtnSair.Size = New System.Drawing.Size(75, 23)
         Me.BtnSair.TabIndex = 0
         Me.BtnSair.Text = "Sair"
         Me.BtnSair.UseVisualStyleBackColor = True
         '
-        'DgvDadosinsA
+        'DgvDadosins
         '
-        Me.DgvDadosinsA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvDadosinsA.Location = New System.Drawing.Point(12, 12)
-        Me.DgvDadosinsA.Name = "DgvDadosinsA"
-        Me.DgvDadosinsA.Size = New System.Drawing.Size(376, 397)
-        Me.DgvDadosinsA.TabIndex = 1
+        Me.DgvDadosins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgvDadosins.Location = New System.Drawing.Point(12, 12)
+        Me.DgvDadosins.Name = "DgvDadosins"
+        Me.DgvDadosins.Size = New System.Drawing.Size(579, 397)
+        Me.DgvDadosins.TabIndex = 1
         '
-        'DgvDadosinsB
+        'LblTotal
         '
-        Me.DgvDadosinsB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DgvDadosinsB.Location = New System.Drawing.Point(394, 12)
-        Me.DgvDadosinsB.Name = "DgvDadosinsB"
-        Me.DgvDadosinsB.Size = New System.Drawing.Size(394, 397)
-        Me.DgvDadosinsB.TabIndex = 2
+        Me.LblTotal.AutoSize = True
+        Me.LblTotal.Location = New System.Drawing.Point(485, 421)
+        Me.LblTotal.Name = "LblTotal"
+        Me.LblTotal.Size = New System.Drawing.Size(91, 13)
+        Me.LblTotal.TabIndex = 3
+        Me.LblTotal.Text = "Total de registros:"
+        '
+        'BtnDadosSegregados
+        '
+        Me.BtnDadosSegregados.Location = New System.Drawing.Point(413, 468)
+        Me.BtnDadosSegregados.Name = "BtnDadosSegregados"
+        Me.BtnDadosSegregados.Size = New System.Drawing.Size(98, 23)
+        Me.BtnDadosSegregados.TabIndex = 4
+        Me.BtnDadosSegregados.Text = "Listar A+3 B+1"
+        Me.BtnDadosSegregados.UseVisualStyleBackColor = True
         '
         'FormTabelaDadosins
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(800, 445)
+        Me.ClientSize = New System.Drawing.Size(604, 503)
         Me.ControlBox = False
-        Me.Controls.Add(Me.DgvDadosinsB)
-        Me.Controls.Add(Me.DgvDadosinsA)
+        Me.Controls.Add(Me.BtnDadosSegregados)
+        Me.Controls.Add(Me.LblTotal)
+        Me.Controls.Add(Me.DgvDadosins)
         Me.Controls.Add(Me.BtnSair)
         Me.Name = "FormTabelaDadosins"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Tabela Dadosins"
-        CType(Me.DgvDadosinsA, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DgvDadosinsB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DgvDadosins, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BtnSair As Button
-    Friend WithEvents DgvDadosinsA As DataGridView
-    Friend WithEvents DgvDadosinsB As DataGridView
+    Friend WithEvents DgvDadosins As DataGridView
+    Friend WithEvents LblTotal As Label
+    Friend WithEvents BtnDadosSegregados As Button
 End Class

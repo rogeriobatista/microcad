@@ -29,6 +29,7 @@ Public Class FormTabelaXemail
     End Sub
 
     Private Sub AtualizarTabela()
+        LblTotal.Text = "Total de registros: " & _registros.Count()
         DgvXemail.DataSource = _registros
     End Sub
 

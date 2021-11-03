@@ -24,12 +24,13 @@ Partial Class FormTabelaDadostxt
     Private Sub InitializeComponent()
         Me.BtnSair = New System.Windows.Forms.Button()
         Me.DgvDadostxt = New System.Windows.Forms.DataGridView()
+        Me.LblTotal = New System.Windows.Forms.Label()
         CType(Me.DgvDadostxt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnSair
         '
-        Me.BtnSair.Location = New System.Drawing.Point(473, 406)
+        Me.BtnSair.Location = New System.Drawing.Point(473, 456)
         Me.BtnSair.Name = "BtnSair"
         Me.BtnSair.Size = New System.Drawing.Size(75, 23)
         Me.BtnSair.TabIndex = 0
@@ -44,13 +45,23 @@ Partial Class FormTabelaDadostxt
         Me.DgvDadostxt.Size = New System.Drawing.Size(536, 388)
         Me.DgvDadostxt.TabIndex = 1
         '
+        'LblTotal
+        '
+        Me.LblTotal.AutoSize = True
+        Me.LblTotal.Location = New System.Drawing.Point(429, 420)
+        Me.LblTotal.Name = "LblTotal"
+        Me.LblTotal.Size = New System.Drawing.Size(91, 13)
+        Me.LblTotal.TabIndex = 2
+        Me.LblTotal.Text = "Total de registros:"
+        '
         'FormTabelaDadostxt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(560, 436)
+        Me.ClientSize = New System.Drawing.Size(560, 491)
         Me.ControlBox = False
+        Me.Controls.Add(Me.LblTotal)
         Me.Controls.Add(Me.DgvDadostxt)
         Me.Controls.Add(Me.BtnSair)
         Me.Name = "FormTabelaDadostxt"
@@ -58,9 +69,11 @@ Partial Class FormTabelaDadostxt
         Me.Text = "Tabela Dadostxt"
         CType(Me.DgvDadostxt, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BtnSair As Button
     Friend WithEvents DgvDadostxt As DataGridView
+    Friend WithEvents LblTotal As Label
 End Class

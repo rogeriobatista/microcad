@@ -2,13 +2,14 @@
 Imports System.Text
 Imports Newtonsoft.Json
 
-Public Class FormTabelaDadosins
+Public Class FormTabelaDadosinsSegregado
     Private Property _registros As List(Of TBLDadosins)
+
     Private Sub BtnSair_Click(sender As Object, e As EventArgs) Handles BtnSair.Click
         ActiveForm.Close()
     End Sub
 
-    Private Sub FormTabelaDadosins_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FormTabelaDadosinsSegregado_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ObterRegistros()
         AtualizarTabela()
     End Sub
@@ -32,11 +33,10 @@ Public Class FormTabelaDadosins
                      Group p By p.nserie0 Into Group
                      Select New With {.nserie0 = nserie0, .total = Group.Count()}).ToList
 
-        LblTotal.Text = "Total de registros: " & lista.Count()
-        DgvDadosins.DataSource = lista
-    End Sub
+        DgvDadosinsA.DataSource = lista.Where(Function(x) x.nserie0.EndsWith("A") And x.total > 3).ToList()
+        DgvDadosinsB.DataSource = lista.Where(Function(x) x.nserie0.EndsWith("B") And x.total > 1).ToList()
 
-    Private Sub BtnDadosSegregados_Click(sender As Object, e As EventArgs) Handles BtnDadosSegregados.Click
-        FormTabelaDadosinsSegregado.Show()
+        LblTotalA.Text = "Total de registros: " & DgvDadosinsA.Rows.Count()
+        LblTotalB.Text = "Total de registros: " & DgvDadosinsB.Rows.Count()
     End Sub
 End Class

@@ -34,6 +34,8 @@ Public Class FormTabelaDadosdat
         DgvDadosdat.DataSource = (From p In _registros
                                   Group p By p.ndata Into Group
                                   Select New With {.ndata = ndata, .total = Group.Sum(Function(x) x.ntot)}).ToList
+
+        LblTotal.Text = "Total de registros: " & DgvDadosdat.Rows.Count()
     End Sub
 
     Private Sub DgvDadosdat_ColumnHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DgvDadosdat.ColumnHeaderMouseClick

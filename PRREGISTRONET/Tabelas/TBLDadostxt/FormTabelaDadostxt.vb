@@ -28,6 +28,7 @@ Public Class FormTabelaDadostxt
     End Sub
 
     Private Sub AtualizarTabela()
+        LblTotal.Text = "Total de registros: " & _registros.Count()
         DgvDadostxt.DataSource = _registros
     End Sub
 

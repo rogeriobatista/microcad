@@ -29,6 +29,7 @@ Public Class FormTabelaRegistronet
     End Sub
 
     Private Sub AtualizarTabela()
+        LblTotal.Text = "Total de registros: " & _registros.Count()
         DgvRegistronet.DataSource = _registros
     End Sub
 

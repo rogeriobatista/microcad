@@ -24,12 +24,13 @@ Partial Class FormTabelaDadosins000
     Private Sub InitializeComponent()
         Me.BtnSair = New System.Windows.Forms.Button()
         Me.DgvDadosins000 = New System.Windows.Forms.DataGridView()
+        Me.LblTotal = New System.Windows.Forms.Label()
         CType(Me.DgvDadosins000, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnSair
         '
-        Me.BtnSair.Location = New System.Drawing.Point(998, 470)
+        Me.BtnSair.Location = New System.Drawing.Point(998, 519)
         Me.BtnSair.Name = "BtnSair"
         Me.BtnSair.Size = New System.Drawing.Size(75, 23)
         Me.BtnSair.TabIndex = 0
@@ -44,13 +45,23 @@ Partial Class FormTabelaDadosins000
         Me.DgvDadosins000.Size = New System.Drawing.Size(1061, 452)
         Me.DgvDadosins000.TabIndex = 1
         '
+        'LblTotal
+        '
+        Me.LblTotal.AutoSize = True
+        Me.LblTotal.Location = New System.Drawing.Point(961, 484)
+        Me.LblTotal.Name = "LblTotal"
+        Me.LblTotal.Size = New System.Drawing.Size(91, 13)
+        Me.LblTotal.TabIndex = 2
+        Me.LblTotal.Text = "Total de registros:"
+        '
         'FormTabelaDadosins000
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(1085, 505)
+        Me.ClientSize = New System.Drawing.Size(1085, 554)
         Me.ControlBox = False
+        Me.Controls.Add(Me.LblTotal)
         Me.Controls.Add(Me.DgvDadosins000)
         Me.Controls.Add(Me.BtnSair)
         Me.Name = "FormTabelaDadosins000"
@@ -58,9 +69,11 @@ Partial Class FormTabelaDadosins000
         Me.Text = "Tabela Dadosins000"
         CType(Me.DgvDadosins000, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BtnSair As Button
     Friend WithEvents DgvDadosins000 As DataGridView
+    Friend WithEvents LblTotal As Label
 End Class

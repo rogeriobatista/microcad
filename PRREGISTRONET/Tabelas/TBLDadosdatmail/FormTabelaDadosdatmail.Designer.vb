@@ -25,12 +25,13 @@ Partial Class FormTabelaDadosdatmail
         Me.BtnSair = New System.Windows.Forms.Button()
         Me.DgvDadosdatmail = New System.Windows.Forms.DataGridView()
         Me.BtnExportarEmail = New System.Windows.Forms.Button()
+        Me.LblTotal = New System.Windows.Forms.Label()
         CType(Me.DgvDadosdatmail, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnSair
         '
-        Me.BtnSair.Location = New System.Drawing.Point(713, 415)
+        Me.BtnSair.Location = New System.Drawing.Point(713, 461)
         Me.BtnSair.Name = "BtnSair"
         Me.BtnSair.Size = New System.Drawing.Size(75, 23)
         Me.BtnSair.TabIndex = 0
@@ -47,20 +48,30 @@ Partial Class FormTabelaDadosdatmail
         '
         'BtnExportarEmail
         '
-        Me.BtnExportarEmail.Location = New System.Drawing.Point(589, 415)
+        Me.BtnExportarEmail.Location = New System.Drawing.Point(589, 461)
         Me.BtnExportarEmail.Name = "BtnExportarEmail"
         Me.BtnExportarEmail.Size = New System.Drawing.Size(118, 23)
         Me.BtnExportarEmail.TabIndex = 2
         Me.BtnExportarEmail.Text = "Exportar Emails"
         Me.BtnExportarEmail.UseVisualStyleBackColor = True
         '
+        'LblTotal
+        '
+        Me.LblTotal.AutoSize = True
+        Me.LblTotal.Location = New System.Drawing.Point(684, 427)
+        Me.LblTotal.Name = "LblTotal"
+        Me.LblTotal.Size = New System.Drawing.Size(91, 13)
+        Me.LblTotal.TabIndex = 3
+        Me.LblTotal.Text = "Total de registros:"
+        '
         'FormTabelaDadosdatmail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(800, 444)
+        Me.ClientSize = New System.Drawing.Size(800, 496)
         Me.ControlBox = False
+        Me.Controls.Add(Me.LblTotal)
         Me.Controls.Add(Me.BtnExportarEmail)
         Me.Controls.Add(Me.DgvDadosdatmail)
         Me.Controls.Add(Me.BtnSair)
@@ -69,10 +80,12 @@ Partial Class FormTabelaDadosdatmail
         Me.Text = "Tabela Dadosdatmail"
         CType(Me.DgvDadosdatmail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BtnSair As Button
     Friend WithEvents DgvDadosdatmail As DataGridView
     Friend WithEvents BtnExportarEmail As Button
+    Friend WithEvents LblTotal As Label
 End Class
