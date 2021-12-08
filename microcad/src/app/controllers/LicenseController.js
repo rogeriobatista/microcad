@@ -21,9 +21,13 @@ class LicenseController {
    async search(req, res) {
       const { predicate } = req.params;
 
-      return res.json(await TBLRegistronet.findOne({
+      return res.json(await TBLRegistronet.findAll({
          where: {
-           [Op.or]: [{email: predicate}, {nome: predicate}, {nserie: predicate}]
+           [Op.or]: [
+              { [ 'email' ]: { [Op.like]: `%${predicate}%` } },
+              { [ 'nome' ]: { [Op.like]: `%${predicate}%` } },
+              { [ 'nserie' ]: { [Op.like]: `%${predicate}%` } },
+            ],
          }
        }))
    }
