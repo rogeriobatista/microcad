@@ -18,6 +18,16 @@ import TBLXemail       from '../models/TBLXemail';
 
 class LicenseController {
 
+   async search(req, res) {
+      const { predicate } = req.params;
+
+      return res.json(await TBLRegistronet.findOne({
+         where: {
+           [Op.or]: [{email: predicate}, {nome: predicate}, {nserie: predicate}]
+         }
+       }))
+   }
+
    async dadosdat(req, res) {
       return res.json(await TBLDadosdat.findAll({
          order: [

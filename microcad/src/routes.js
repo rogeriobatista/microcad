@@ -28,6 +28,9 @@ const routes = new Router();
 //
 routes.get('/', (req, res) => res.send('API MICROCAD V2.6 is running OK.'));
 //
+/** API App Mobile */
+routes.get('/api/search/:predicate',                   LicenseController.search);
+//
 routes.get('/api/atualiza',                            LicenseController.atualiza);
 routes.post('/api/atualiza/update',                    LicenseController.atualizaUpdate);
 routes.get('/api/dadosdat',                            LicenseController.dadosdat);
