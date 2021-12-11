@@ -30,6 +30,7 @@ routes.get('/', (req, res) => res.send('API MICROCAD V2.6 is running OK.'));
 //
 /** API App Mobile */
 routes.get('/api/search/:predicate',                   LicenseController.search);
+routes.post('/api/email/send',                         LicenseController.sendEmail);
 //
 routes.get('/api/atualiza',                            LicenseController.atualiza);
 routes.post('/api/atualiza/update',                    LicenseController.atualizaUpdate);

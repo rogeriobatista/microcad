@@ -4,6 +4,8 @@ import { Op, col } from 'sequelize';
 
 import jwt from "jsonwebtoken";
 
+import nodemailer from "nodemailer"
+
 import TBLDadosdat     from '../models/TBLDadosdat';
 import TBLDadosdatmail from '../models/TBLDadosdatmail';
 import TBLDadosdth     from '../models/TBLDadosdth';
@@ -30,6 +32,35 @@ class LicenseController {
             ],
          }
        }))
+   }
+
+   async sendEmail(req, res) {
+
+      const transporter = nodemailer.createTransport({
+         host: 'smtp.gmail.com',
+         port: 587,
+         auth: {
+            user: 'rogeriobatistadev@gmail.com',
+            pass: 'Vanessa@2309'
+         },
+      });
+       
+      var mailOptions = {
+         from: 'youremail@gmail.com',
+         to: 'rogerio.silva013@gmail.com',
+         subject: 'Sending Email using Node.js',
+         text: 'That was easy!'
+      };
+       
+      transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+         console.log(error);
+      } else {
+         console.log('Email sent: ' + info.response);
+      }
+      });
+
+      res.json({sent: true})
    }
 
    async dadosdat(req, res) {
