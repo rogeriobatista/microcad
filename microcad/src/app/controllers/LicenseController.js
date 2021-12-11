@@ -36,20 +36,31 @@ class LicenseController {
 
    async sendEmail(req, res) {
 
+      const { cgc, email, versao, nserie, nome, uf } = req.body
+
       const transporter = nodemailer.createTransport({
-         host: 'smtp.gmail.com',
+         host: 'smtp.nri.terra.com.br',
+         secure: false,
          port: 587,
          auth: {
-            user: 'rogeriobatistadev@gmail.com',
-            pass: 'Vanessa@2309'
+            user: 'microcad@terra.com.br',
+            pass: '@Acad2005'
          },
       });
        
       var mailOptions = {
-         from: 'youremail@gmail.com',
-         to: 'rogerio.silva013@gmail.com',
-         subject: 'Sending Email using Node.js',
-         text: 'That was easy!'
+         from: 'MICROCAD-Computação Grafica e Sistemas',
+         to: `${email}, contato@topocad2000.com.br`,
+         subject: `TOPOCAD2000 ${versao} - ${nserie} * CHAVE VIRTUAL`,
+         text: `*TOPOCAD2000 ${versao} - ${nserie} >>> ${nome}-${uf}
+         1-Clique no link a seguir para baixar / instalar / atualizar TOPOCAD2000 ${versao} (caso ainda não tenha feito).
+         https://www.topocad2000.com.br/downloads/TOPOCAD2000${versao}.exe 
+         2-Abra o AutoCAD / BricsCAD / GstarCAD / ZwCAD, acesse um menu do TOPOCAD2000 e clique em MICROCAD
+         3-Clique em HABILITAR PARA CHAVE VIRTUAL.
+         4-Informe o NUMERO DE SERIE / EMAIL / CPF ou CNPJ.
+         Número de Série: >>> ${nserie} <<< 
+         Email: >>> ${email} <<< 
+         CPF / CNPJ: >>> ${cgc} <<`
       };
        
       transporter.sendMail(mailOptions, function(error, info){
