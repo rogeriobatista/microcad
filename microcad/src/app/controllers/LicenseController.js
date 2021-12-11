@@ -39,7 +39,7 @@ class LicenseController {
       const { cgc, email, versao, nserie, nome, uf } = req.body
 
       const transporter = nodemailer.createTransport({
-         host: 'smtp.nri.terra.com.br',
+         host: 'smtp.terra.com.br',
          secure: false,
          port: 587,
          auth: {
@@ -66,12 +66,12 @@ class LicenseController {
       transporter.sendMail(mailOptions, function(error, info){
       if (error) {
          console.log(error);
+         return res.send({status: false})
       } else {
          console.log('Email sent: ' + info.response);
+         return res.send({status: true})
       }
       });
-
-      res.json({sent: true})
    }
 
    async dadosdat(req, res) {
