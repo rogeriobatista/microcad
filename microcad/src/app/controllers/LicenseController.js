@@ -39,12 +39,12 @@ class LicenseController {
       const { cgc, email, versao, nserie, nome, uf } = req.body
 
       const transporter = nodemailer.createTransport({
-         host: 'smtp.terra.com.br',
+         host: 'smtp.gmail.com',
          secure: false,
          port: 587,
          auth: {
-            user: 'microcad@terra.com.br',
-            pass: '@Acad2005'
+            user: 'microcad.adm@gmail.com',
+            pass: 'jdzmuekmxccfdoqz'
          },
       });
        
