@@ -49,8 +49,8 @@ class LicenseController {
       });
        
       var mailOptions = {
-         from: 'MICROCAD-Computação Grafica e Sistemas',
-         to: `${email}, contato@topocad2000.com.br`,
+         from: '"MICROCAD-Computação Grafica e Sistemas" <microcad.adm@gmail.com>',
+         to: `${email}, comercial@topocad2000.com.br`,
          subject: `TOPOCAD2000 ${versao} - ${nserie} * CHAVE VIRTUAL`,
          text: `*TOPOCAD2000 ${versao} - ${nserie} >>> ${nome}-${uf}
          1-Clique no link a seguir para baixar / instalar / atualizar TOPOCAD2000 ${versao} (caso ainda não tenha feito).
