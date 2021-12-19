@@ -12,6 +12,7 @@
       "dev:debug": "nodemon --inspect src/server.js"
    },
    "dependencies": {
+      "axios": "^0.24.0",
       "bee-queue": "^1.2.3",
       "cors": "^2.8.5",
       "dotenv": "^8.2.0",

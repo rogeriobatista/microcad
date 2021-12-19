@@ -4,7 +4,9 @@ import { Op, col } from 'sequelize';
 
 import jwt from "jsonwebtoken";
 
-import nodemailer from "nodemailer"
+import nodemailer from "nodemailer";
+
+import axios from 'axios';
 
 import TBLDadosdat     from '../models/TBLDadosdat';
 import TBLDadosdatmail from '../models/TBLDadosdatmail';
@@ -19,6 +21,15 @@ import TBLRegistronet  from '../models/TBLRegistronet';
 import TBLXemail       from '../models/TBLXemail';
 
 class LicenseController {
+
+   async getSigefIncra(req, res) {
+      const { id } = req.params
+      const url = `https://sigef.incra.gov.br/geo/parcela/detalhe/${id}`
+
+      const { data } = await axios.get(url)
+
+      res.send(data)
+   }
 
    async search(req, res) {
       const { predicate } = req.params;

@@ -32,6 +32,9 @@ routes.get('/', (req, res) => res.send('API MICROCAD V2.6 is running OK.'));
 routes.get('/api/search/:predicate',                   LicenseController.search);
 routes.post('/api/email/send',                         LicenseController.sendEmail);
 //
+/** API Sigef Incra */
+routes.get('/api/sigef/incra/:id',                     LicenseController.getSigefIncra);
+//
 routes.get('/api/atualiza',                            LicenseController.atualiza);
 routes.post('/api/atualiza/update',                    LicenseController.atualizaUpdate);
 routes.get('/api/dadosdat',                            LicenseController.dadosdat);
